@@ -4,7 +4,6 @@ import './App.css'
 function App() {
   return (
     <>
-    <h1>Página forms</h1>
     <PlantsFormPage/>
     </>
   )
