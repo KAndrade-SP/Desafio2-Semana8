@@ -1,4 +1,5 @@
 import { useState, useRef } from "react"
+import { PiUser, PiSignOut, PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
 
 const Navbar = () => {
 
@@ -26,7 +27,7 @@ const Navbar = () => {
         
         <p className="text-lg">Logo</p>
 
-        <div className="hidden md:flex items-center ">
+        <div className="hidden md:flex items-center">
           <ul className="flex gap-4">
             <li className="text-sm">Home</li>
             <li className="text-sm">Register</li>
@@ -36,7 +37,6 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex">
-
           <div>
             <a
               onClick={handleClick}
@@ -55,18 +55,58 @@ const Navbar = () => {
             >
                 
               <ul>
-                <div className="flex pl-4 pt-2 items-center nav-link">
-                  <li className="p-4">Perfil</li>
+                <div className="flex pl-4 pt-2 items-center">
+                  <PiUser size={24}/>
+                  <li className="p-4">Profile</li>
                 </div>
                   
-                <div className="flex pl-4 pt-2 items-center nav-link">
-                  <li className="p-4">Sair</li>
+                <div className="flex pl-4 pt-2 items-center">
+                  <PiSignOut size={24}/>
+                  <li className="p-4">Log out</li>
                 </div>
               </ul>
 
             </div>
           </div>
+        </div>
 
+        <div className='md:hidden mr-10' onClick={handleClick}>
+          {toggle?<PiX size={24}/>:<PiList size={24}/>}
+        </div>
+
+        {/* DROPDOWN MENU */}
+        <div onClick={handleClick} className={toggle?'absolute mobile-dropdown hover:text-[#a0a2ab] z-10 w-full px-4 md:hidden':'hidden'}>
+          <ul>
+            <a className='flex pl-4 pt-2 items-center'>
+              <PiUser size={24}/>
+              <li className='p-4'>Profile</li>
+            </a>
+
+            <div className='flex pl-4 pt-2 items-center'>
+              <PiHouse size={24}/>
+              <li className='p-4'>Home</li>
+            </div>
+                    
+            <div className='flex pl-4 pt-2 items-center'>
+              <PiNewspaper size={24}/>
+              <li className='p-4'>Register</li>
+            </div>
+                    
+            <div className='flex pl-4 pt-2 items-center'>
+              <PiShoppingCartSimple size={24}/>
+              <li className='p-4'>Products</li>
+            </div>
+                    
+            <div className='flex pl-4 pt-2 items-center'>
+              <PiInfo size={24}/>
+              <li className='p-4'>About Us</li>
+            </div>
+                    
+            <div className='flex pl-4 pt-2 items-center'>
+              <PiSignOut size={24}/>
+              <li className='p-4'>Log out</li>
+            </div>        
+          </ul>
         </div>
 
       </div>
