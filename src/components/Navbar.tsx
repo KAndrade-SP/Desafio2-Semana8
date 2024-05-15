@@ -4,11 +4,19 @@ import { Link } from "react-router-dom"
 import { PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
 
 import Logo from '../assets/images/navbar-logo.svg'
+import { UserButton, useUser } from "@clerk/clerk-react"
 
 const Navbar = () => {
 
   const ref = useRef<HTMLDivElement>(null)
   const [toggle, setToggle] = useState(false)
+
+  const { isSignedIn, user, isLoaded } = useUser();
+
+  if (!isLoaded) {
+    // Handle loading state however you like
+    return null;
+  }
 
   const outsideClick = (e: MouseEvent) => {
 
@@ -57,7 +65,7 @@ const Navbar = () => {
               onClick={handleClick}
               className="flex justify-end gap-4 items-center cursor-pointer hover:opacity-75"
             >
-              <p className="lg:m-auto md:text-md">UserIcon</p>
+              <UserButton />
             </a>
           </div>
         </div>
@@ -69,6 +77,13 @@ const Navbar = () => {
         {/* DROPDOWN MENU */}
         <div onClick={handleClick} className={toggle?'absolute mt-5 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-4 md:hidden':'hidden'}>
           <ul>
+            {isSignedIn 
+            ? <div className="flex pl-4 pt-2 items-center">
+                <UserButton />
+                <p className="px-3 py-2">{user.firstName}</p>
+              </div> 
+            : <></>}
+
             <Link to={'/'} className='flex pl-4 pt-2 items-center'>
               <PiHouse size={24}/>
               <li className='p-4'>Home</li>
@@ -87,7 +102,8 @@ const Navbar = () => {
             <Link to={'/about-us'} className='flex pl-4 pt-2 items-center'>
               <PiInfo size={24}/>
               <li className='p-4'>About Us</li>
-            </Link>       
+            </Link>  
+                  
           </ul>
         </div>
 

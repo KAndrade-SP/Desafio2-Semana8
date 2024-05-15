@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
+
 import './App.css'
 
 import Navbar from './components/Navbar'
@@ -12,28 +14,34 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      
-      <Routes>
-        <Route
-          path="/"
-          element={<HomePage/>}
-        />
-        <Route
-          path="/register"
-          element={<RegisterPage/>}
-        />
-        <Route
-          path="/products"
-          element={<ProductsPage/>}
-        />
-        <Route
-          path="/about-us"
-          element={ 
-            <AboutUsPage/>
-          }
-        />
-      </Routes>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+
+      <SignedIn>
+        <Navbar />
+        
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage/>}
+          />
+          <Route
+            path="/register"
+            element={<RegisterPage/>}
+          />
+          <Route
+            path="/products"
+            element={<ProductsPage/>}
+          />
+          <Route
+            path="/about-us"
+            element={ 
+              <AboutUsPage/>
+            }
+          />
+        </Routes>
+      </SignedIn>
     </>
   )
 }
