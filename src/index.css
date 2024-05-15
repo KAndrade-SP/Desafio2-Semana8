@@ -1,3 +1,73 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "EBGaramond-bold";
+    src: url("./assets/fonts/EBGaramond-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "EBGaramond-regular";
+    src: url("./assets/fonts/EBGaramond-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Lato-bold";
+    src: url("./assets/fonts/Lato-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Lato-regular";
+    src: url("./assets/fonts/Lato-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Raleway-regular";
+    src: url("./assets/fonts/Raleway-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Raleway-bold";
+    src: url("./assets/fonts/Raleway-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pacifico-regular";
+    src: url("./assets/fonts/Pacifico-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter-medium";
+    src: url("./assets/fonts/Inter-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter-regular";
+    src: url("./assets/fonts/Inter-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter-semibold";
+    src: url("./assets/fonts/Inter-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-display: swap;
+}
