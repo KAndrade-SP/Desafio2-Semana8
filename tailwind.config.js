@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        lato:'var(--lato)',
+        pacifico:'var(--pacifico)',
+        ebgaramond:'var(--ebgaramond)',
+        raleway:'var(--raleway)'
+      }
+    },
   },
   plugins: [],
 }
