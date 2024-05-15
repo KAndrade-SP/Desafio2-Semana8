@@ -1,5 +1,7 @@
 import { useState, useRef } from "react"
-import { PiUser, PiSignOut, PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
+import { PiSignOut, PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
+
+import Logo from '../assets/images/navbar-logo.svg'
 
 const Navbar = () => {
 
@@ -22,17 +24,17 @@ const Navbar = () => {
   document.addEventListener("mousedown", outsideClick)
 
   return (
-    <header ref={ref} className="w-full h-[80px]">
-      <div className="max-w-[1280px] mx-5 lg:m-auto w-full h-full flex justify-between items-center md:px-0 px-4">
+    <header ref={ref} className=" h-[80px] font-medium font-raleway-regular bg-lightgray">
+      <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
-        <p className="text-lg">Logo</p>
+        <img src={Logo} className="cursor-pointer hover:opacity-75" alt="" />
 
         <div className="hidden md:flex items-center">
-          <ul className="flex gap-4">
-            <li className="text-sm">Home</li>
-            <li className="text-sm">Register</li>
-            <li className="text-sm">Products</li>
-            <li className="text-sm">About us</li>
+          <ul className="flex gap-7">
+            <li className="text-sm text-avacado hover:text-lunargreen cursor-pointer">Home</li>
+            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Register</li>
+            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Products</li>
+            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">About us</li>
           </ul>
         </div>
 
@@ -40,48 +42,20 @@ const Navbar = () => {
           <div>
             <a
               onClick={handleClick}
-              className="flex justify-end gap-4 items-center cursor-pointer hover:text-[#a0a2ab]"
+              className="flex justify-end gap-4 items-center cursor-pointer hover:opacity-75"
             >
               <p className="lg:m-auto md:text-sm">UserIcon</p>
             </a>
-
-            <div
-              onClick={handleClick}
-              className={
-                toggle
-                  ? "absolute bg-slate-400 rounded-xl mt-0.1 dropdown translate-y-10 z-10 w-[150px] px-2"
-                  : "hidden"
-              }
-            >
-                
-              <ul>
-                <div className="flex pl-4 pt-2 items-center">
-                  <PiUser size={24}/>
-                  <li className="p-4">Profile</li>
-                </div>
-                  
-                <div className="flex pl-4 pt-2 items-center">
-                  <PiSignOut size={24}/>
-                  <li className="p-4">Log out</li>
-                </div>
-              </ul>
-
-            </div>
           </div>
         </div>
 
-        <div className='md:hidden mr-10' onClick={handleClick}>
+        <div className='md:hidden' onClick={handleClick}>
           {toggle?<PiX size={24}/>:<PiList size={24}/>}
         </div>
 
         {/* DROPDOWN MENU */}
-        <div onClick={handleClick} className={toggle?'absolute mobile-dropdown hover:text-[#a0a2ab] z-10 w-full px-4 md:hidden':'hidden'}>
+        <div onClick={handleClick} className={toggle?'absolute mt-5 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-4 md:hidden':'hidden'}>
           <ul>
-            <a className='flex pl-4 pt-2 items-center'>
-              <PiUser size={24}/>
-              <li className='p-4'>Profile</li>
-            </a>
-
             <div className='flex pl-4 pt-2 items-center'>
               <PiHouse size={24}/>
               <li className='p-4'>Home</li>
