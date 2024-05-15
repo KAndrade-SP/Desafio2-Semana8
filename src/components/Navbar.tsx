@@ -1,5 +1,7 @@
 import { useState, useRef } from "react"
-import { PiSignOut, PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
+import { Link } from "react-router-dom"
+
+import { PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
 
 import Logo from '../assets/images/navbar-logo.svg'
 
@@ -31,10 +33,21 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
-            <li className="text-sm text-avacado hover:text-lunargreen cursor-pointer">Home</li>
-            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Register</li>
-            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Products</li>
-            <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">About us</li>
+            <Link to={'/'}>
+              <li className="text-sm text-avacado hover:text-lunargreen cursor-pointer">Home</li>
+            </Link>
+
+            <Link to={'/register'}>
+              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Register</li>
+            </Link>
+
+            <Link to={'/products'}>
+              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Products</li>
+            </Link>
+
+            <Link to={'/about-us'}>
+              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">About us</li>
+            </Link>
           </ul>
         </div>
 
@@ -56,30 +69,25 @@ const Navbar = () => {
         {/* DROPDOWN MENU */}
         <div onClick={handleClick} className={toggle?'absolute mt-5 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-4 md:hidden':'hidden'}>
           <ul>
-            <div className='flex pl-4 pt-2 items-center'>
+            <Link to={'/'} className='flex pl-4 pt-2 items-center'>
               <PiHouse size={24}/>
               <li className='p-4'>Home</li>
-            </div>
+            </Link>
                     
-            <div className='flex pl-4 pt-2 items-center'>
+            <Link to={'/register'} className='flex pl-4 pt-2 items-center'>
               <PiNewspaper size={24}/>
               <li className='p-4'>Register</li>
-            </div>
+            </Link>
                     
-            <div className='flex pl-4 pt-2 items-center'>
+            <Link to={'/products'} className='flex pl-4 pt-2 items-center'>
               <PiShoppingCartSimple size={24}/>
               <li className='p-4'>Products</li>
-            </div>
+            </Link>
                     
-            <div className='flex pl-4 pt-2 items-center'>
+            <Link to={'/about-us'} className='flex pl-4 pt-2 items-center'>
               <PiInfo size={24}/>
               <li className='p-4'>About Us</li>
-            </div>
-                    
-            <div className='flex pl-4 pt-2 items-center'>
-              <PiSignOut size={24}/>
-              <li className='p-4'>Log out</li>
-            </div>        
+            </Link>       
           </ul>
         </div>
 
