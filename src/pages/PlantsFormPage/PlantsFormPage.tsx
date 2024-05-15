@@ -1,7 +1,31 @@
+import { useState } from "react";
+
 const PlantsFormPage = () => {
+  const [values, setValues] = useState({
+    plantName: "",
+    plantSubtitle: "",
+    plantEspecies: "",
+    price: "",
+    discountPercentage: "",
+    plantLabel: "",
+    features: "",
+    description: "",
+  });
+
+  const validateForm = (e) => {
+    e.preventDefault();
+    // if(values.description == '')
+  };
+
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values);
+    console.log(e.target.name);
+  };
+
   return (
     <html>
-      <body className="bg-lightgray min-h-screen ">
+      <body className="bg-lightgray min-w-screen ">
         <header>
           <p>header</p>
         </header>
@@ -18,22 +42,22 @@ const PlantsFormPage = () => {
               <form>
                 <div className="flex flex-col justify-center items-center">
                   <div>
-                    <label htmlFor="name" className="font-Inter-medium text-lg">
+                    <label className="font-Inter-medium text-lg">
                       Plant name
                     </label>
                     <br />
                     <input
                       className="py-1.5 rounded-md max-w-100"
                       type="text"
-                      name="name"
-                      id="name"
+                      name="plantName"
                       placeholder="Echinocereus Cactus"
+                      onChange={onChange}
+                      //onFocus={validateForm}
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="subtitle"
                       className="font-Inter-medium text-lg"
                     >
                       Plant subtitle
@@ -41,29 +65,28 @@ const PlantsFormPage = () => {
                     <br />
                     <input
                       type="text"
-                      name="subtitle"
-                      id="subtitle"
+                      name="plantSubtitle"
                       placeholder="A majestic addition to your plant collection"
+                      onChange={onChange}
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="type" className="font-Inter-medium text-lg">
+                    <label className="font-Inter-medium text-lg">
                       Plant type
                     </label>
                     <br />
                     <input
                       type="text"
-                      name="type"
-                      id="type"
+                      name="plantEspecies"
                       placeholder="Cactus"
+                      onChange={onChange}
                     />
                   </div>
 
                   <div className="flex flex-row max-w-100">
                     <div>
                       <label
-                        htmlFor="price"
                         className="font-Inter-medium text-lg"
                       >
                         Price
@@ -72,13 +95,12 @@ const PlantsFormPage = () => {
                       <input
                         type="number"
                         name="price"
-                        id="price"
                         placeholder="$139.99"
+                        onChange={onChange}
                       />
                     </div>
                     <div>
                       <label
-                        htmlFor="discountPercentage"
                         className="font-Inter-medium text-lg"
                       >
                         Discount percentage
@@ -87,15 +109,14 @@ const PlantsFormPage = () => {
                       <input
                         type="number"
                         name="discountPercentage"
-                        id="discountPercentage"
                         placeholder="20%"
+                        onChange={onChange}
                       />
                     </div>
                   </div>
 
                   <div>
                     <label
-                      htmlFor="label"
                       className="font-Inter-medium text-lg"
                     >
                       Label:{" "}
@@ -103,14 +124,15 @@ const PlantsFormPage = () => {
                     <div>
                       <div className="flex flex-row max-w-xl gap-3 justify-center items-center">
                         <div className=" font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="label" id="label" />
-                          <label htmlFor="indoor" defaultChecked>
+                          <input type="checkbox" name="plantLabel"/>
+                          <label defaultChecked>
                             Indoor
                           </label>
                         </div>
-                        <div className=" font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="label" id="label" />
+                        <div className="font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
+                          <input type="checkbox" name="plantLabel" />
                           <label htmlFor="outdoor">Outdoor</label>
+                          onChange={onChange}
                         </div>
                       </div>
                     </div>
@@ -118,7 +140,6 @@ const PlantsFormPage = () => {
 
                   <div>
                     <label
-                      htmlFor="features"
                       className="font-Inter-medium text-lg"
                     >
                       Features
@@ -127,14 +148,13 @@ const PlantsFormPage = () => {
                     <input
                       type="text"
                       name="features"
-                      id="features"
                       placeholder="Species: Echinocereus..."
+                      onChange={onChange}
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="description"
                       className="font-Inter-medium text-lg"
                     >
                       Description
@@ -143,12 +163,12 @@ const PlantsFormPage = () => {
                     <input
                       type="text"
                       name="description"
-                      id="description"
                       placeholder="Ladyfinger cactus..."
+                      onChange={onChange}
                     />
                   </div>
                 </div>
-                <button>Register</button>
+                <button onClick={validateForm}>Register</button>
               </form>
             </div>
             <div>image</div>
