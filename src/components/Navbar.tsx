@@ -34,19 +34,19 @@ const Navbar = () => {
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
             <Link to={'/'}>
-              <li className="text-sm text-avacado hover:text-lunargreen cursor-pointer">Home</li>
+              <li className="text-md text-avacado hover:text-lunargreen cursor-pointer">Home</li>
             </Link>
 
             <Link to={'/register'}>
-              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Register</li>
+              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Register</li>
             </Link>
 
             <Link to={'/products'}>
-              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">Products</li>
+              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Products</li>
             </Link>
 
             <Link to={'/about-us'}>
-              <li className="text-sm text-lunargreen hover:text-avacado cursor-pointer">About us</li>
+              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">About us</li>
             </Link>
           </ul>
         </div>
@@ -57,7 +57,7 @@ const Navbar = () => {
               onClick={handleClick}
               className="flex justify-end gap-4 items-center cursor-pointer hover:opacity-75"
             >
-              <p className="lg:m-auto md:text-sm">UserIcon</p>
+              <p className="lg:m-auto md:text-md">UserIcon</p>
             </a>
           </div>
         </div>
