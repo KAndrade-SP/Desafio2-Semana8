@@ -7,13 +7,20 @@ import Img2 from "./assets/img2.jpg";
 import Img3 from "./assets/img3.jpg";
 import Plant1 from "./assets/plant1.jpg";
 import Plant2 from "./assets/plant2.png";
+import Carousel1 from "./components/Carousel1";
+import Carousel2 from "./components/Carousel2";
+import { EmblaOptionsType } from "embla-carousel";
+
+const OPTIONS: EmblaOptionsType = { loop: false };
+const SLIDE_COUNT = 10;
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
 
 export function HomePage() {
   return (
     <div>
       <main className="w-full min-h-svh text-medgray">
-        <section className="px-28 py-9 bg-grayishgreen">
-          <div className="flex flex-row items-center justify-between gap-28">
+        <section className="px-28 py-9 flex relative min-h-svh bg-grayishgreen">
+          <div className="flex relative flex-row items-center justify-between gap-28 z-10">
             <div className="flex flex-col justify-center items-start gap-6">
               <div className="flex flex-row justify-center items-center gap-1">
                 <div className="w-8 h-1 bg-almblack "></div>
@@ -34,13 +41,15 @@ export function HomePage() {
                 Shop Now
               </button>
             </div>
-
-            <img className="" src={Plant1} alt="" />
           </div>
+          <img className="absolute right-0 bottom-0" src={Plant1} alt="" />
+          <img
+            className="absolute left-0 bottom-0 translate-y-[38%]"
+            src={Plant2}
+            alt=""
+          />
 
-          <img className="absolute left-0 -bottom-[345px]" src={Plant2} alt="" />
-
-          <div className="flex flex-row items-center justify-start">
+          <div className="flex flex-row items-center justify-start absolute bottom-0 left-0 w-full px-28 pb-8">
             <a
               className="flex flex-row items-center justify-center gap-2"
               href=""
@@ -134,7 +143,27 @@ export function HomePage() {
             </div>
           </div>
         </section>
-        <section></section>
+        <section className="flex flex-col items-center justify-center gap-24 py-12 bg-grayishgreen w-full ">
+          <div className="gap-48 w-full flex flex-col justify-center items-center">
+            <h2 className="text-6xl font-ebgaramond-bold text-lunargreen">
+              This Weeks Most Popular{" "}
+              <span className="text-avacado">And Best Selling</span>
+            </h2>
+
+            <div className="w-full">
+              <Carousel1 slides={SLIDES} options={OPTIONS} />
+            </div>
+          </div>
+          <div className="gap-48 w-full flex flex-col justify-center items-center">
+            <h2 className="text-6xl font-ebgaramond-bold text-avacado">
+              Plants In <span className="text-lunargreen">Sale</span>
+            </h2>
+
+            <div className="w-full">
+              <Carousel2 slides={SLIDES} options={OPTIONS} />
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );

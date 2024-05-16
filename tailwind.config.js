@@ -33,6 +33,10 @@ export default {
       },
       fontSize: {
         '6.5xl': '4rem',
+      },
+
+      screens: {
+        '3xl': '1800px',
       }
     },
   },
