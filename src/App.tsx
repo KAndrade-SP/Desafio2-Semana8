@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage"
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
 import RegisterPage from "./pages/RegisterPage/RegisterPage"
 import Error404 from "./pages/Error404/Error404"
+import ProductsPage from "./pages/ProductsPage/ProductsPage"
 
 function App() {
 
@@ -37,6 +38,10 @@ function App() {
             element={ 
               <AboutUsPage/>
             }
+          />
+          <Route 
+            path="/products"
+            element={<ProductsPage/>}
           />
         </Routes>
       </SignedIn>
