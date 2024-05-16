@@ -1,27 +1,97 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import {validName, validSubtitle, validPrice, validLabel, validFeatures, validDescription} from './RegexValidation'
+import { PlantsType } from "./PlantsType";
+import { PlantsError } from "./PlantsError";
 
 const PlantsFormPage = () => {
-  const [values, setValues] = useState({
-    plantName: "",
-    plantSubtitle: "",
-    plantEspecies: "",
-    price: "",
-    discountPercentage: "",
-    plantLabel: "",
-    features: "",
-    description: "",
-  });
+  
+  const [formData, setFormData] = useState <PlantsType>({plantName: "",plantSubtitle:"", price: 0.00, isInSale: Boolean, discountPercentage: 0, plantLabel: ["", ""], features: "", description: ""})
+  console.log(formData)
+
+  const plantNameRef = useRef<HTMLInputElement>(null); 
+  const plantSubtitleRef = useRef<HTMLInputElement>(null);  
+  const priceRef = useRef<HTMLInputElement>(null); 
+  const discountPercentageRef = useRef<HTMLInputElement>(null); 
+  const plantLabelRef = useRef<HTMLInputElement>(null); 
+  const featuresRef = useRef<HTMLInputElement>(null); 
+  const descriptionRef = useRef<HTMLInputElement>(null); 
+
+
+  const [errors, setErrors] = useState<PlantsError>({plantName: "",plantSubtitle:"", price: 0.00, isInSale: Boolean, discountPercentage: 0, plantLabel: ["", ""], features: "", description: ""})
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  
 
   const validateForm = (e) => {
     e.preventDefault();
-    // if(values.description == '')
+    const plantNameValue = plantNameRef.current?.value || '';
+    const plantSubtitleValue = plantSubtitleRef.current?.value || '';
+    const priceValue = priceRef.current?.value || '';
+    const discountPercentageValue = discountPercentageRef.current?.value || '';
+    const plantLabelValue = plantLabelRef.current?.value || '';
+    const featuresValue = featuresRef.current?.value || '';
+    const descriptionValue = descriptionRef.current?.value || '';
+
+    const errorsData: PlantsType = {plantName: "",plantSubtitle:"", price: Number, isInSale: Boolean, discountPercentage: Number, plantLabel: ["", ""], features: "", description: ""}
+
+    if (!plantNameValue) {
+      errorsData.plantName = 'This field is required';
+    } else if (!validName.test(plantNameValue)) {
+      errorsData.plantName = 'Your entrie is no valid';
+    }
+
+    if (!plantSubtitleValue) {
+      errorsData.plantSubtitle = 'This field is required';
+    } else if (!validSubtitle.test(plantSubtitleValue)) {
+      errorsData.plantSubtitle = 'Your entrie is no valid';
+    }
+
+    if (!priceValue) {
+      errorsData.price = 'This field is required';
+    } else if (!validPrice.test(priceValue)) {
+      errorsData.price = 'Your entrie is no valid';
+    }
+
+    if (!discountPercentageValue) {
+      errorsData.discountPercentage = 'This field is required';
+      //errorsData.isInSale = false
+    } else if (discountPercentageValue <= 0 || discountPercentageValue >= 100) {
+      errorsData.plantName = 'Your entrie is no valid';
+    }
+
+    if (!plantLabelValue) {
+      // errorsData.plantLabel = 'This field is required';
+    }
+
+    if (!featuresValue) {
+      errorsData.features = 'This field is required';
+    } else if (!validFeatures.test(featuresValue)) {
+      errorsData.features = 'Your entrie is no valid';
+    }
+
+    if (!descriptionValue) {
+      errorsData.description = 'This field is required';
+    } else if (!validDescription.test(descriptionValue)) {
+      errorsData.description = 'Your entrie is no valid';
+    }
+    
+
+
+
+    setErrors(errorsData);
+
   };
 
-  const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    console.log(values);
-    console.log(e.target.name);
-  };
+
+
+  
 
   return (
     <html>
@@ -35,30 +105,31 @@ const PlantsFormPage = () => {
           <div className="grid grid-cols-2">
             <div>
               <div>
-                <h1 className="font-inter-semibold text-2xl text-lunargreen">
+                <h1 className="">
                   Plant registration
                 </h1>
               </div>
               <form>
-                <div className="flex flex-col justify-center items-center">
+                <div className="">
                   <div>
-                    <label className="font-Inter-medium text-lg">
+                    <label className="">
                       Plant name
                     </label>
                     <br />
                     <input
-                      className="py-1.5 rounded-md max-w-100"
+                      className=""
                       type="text"
                       name="plantName"
                       placeholder="Echinocereus Cactus"
+                      value={formData.plantName}
                       onChange={onChange}
-                      //onFocus={validateForm}
+                      ref={plantNameRef}
                     />
+                    {errors.plantName && <span>{errors.plantName}</span>}
                   </div>
 
                   <div>
                     <label
-                      className="font-Inter-medium text-lg"
                     >
                       Plant subtitle
                     </label>
@@ -67,24 +138,30 @@ const PlantsFormPage = () => {
                       type="text"
                       name="plantSubtitle"
                       placeholder="A majestic addition to your plant collection"
+                      value={formData.plantSubtitle}
                       onChange={onChange}
+                      ref={plantSubtitleRef}
                     />
+                    {errors.plantSubtitle && <span style={{ color: 'red' }}>{errors.plantSubtitle}</span>}
                   </div>
 
                   <div>
-                    <label className="font-Inter-medium text-lg">
+                    <label>
                       Plant type
                     </label>
                     <br />
                     <input
                       type="text"
-                      name="plantEspecies"
+                      name="plantLabel"
                       placeholder="Cactus"
+                      value={formData.plantType}
                       onChange={onChange}
+                      ref={plantLabelRef}
                     />
+                    {errors.plantLabel && <span style={{ color: 'red' }}>{errors.plantLabel}</span>}
                   </div>
 
-                  <div className="flex flex-row max-w-100">
+                  <div>
                     <div>
                       <label
                         className="font-Inter-medium text-lg"
@@ -96,12 +173,14 @@ const PlantsFormPage = () => {
                         type="number"
                         name="price"
                         placeholder="$139.99"
+                        value={formData.price}
                         onChange={onChange}
+                        ref={priceRef}
                       />
+                      {errors.price && <span style={{ color: 'red' }}>{errors.price}</span>}
                     </div>
                     <div>
                       <label
-                        className="font-Inter-medium text-lg"
                       >
                         Discount percentage
                       </label>
@@ -110,38 +189,38 @@ const PlantsFormPage = () => {
                         type="number"
                         name="discountPercentage"
                         placeholder="20%"
+                        value={formData.discountPercentage}
                         onChange={onChange}
+                        ref={discountPercentageRef}
                       />
+                      {errors.discountPercentage && <span style={{ color: 'red' }}>{errors.discountPercentage}</span>}
                     </div>
                   </div>
 
                   <div>
                     <label
-                      className="font-Inter-medium text-lg"
                     >
                       Label:{" "}
                     </label>
                     <div>
                       <div className="flex flex-row max-w-xl gap-3 justify-center items-center">
                         <div className=" font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="plantLabel"/>
+                          <input type="checkbox" name="plantLabel" onChange={onChange} ref={plantLabelRef}/>
                           <label defaultChecked>
                             Indoor
                           </label>
                         </div>
                         <div className="font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="plantLabel" />
+                          <input type="checkbox" name="plantLabel" onChange={onChange} ref={plantLabelRef}/>
                           <label htmlFor="outdoor">Outdoor</label>
-                          onChange={onChange}
                         </div>
                       </div>
                     </div>
+                    {errors.plantLabel && <span style={{ color: 'red' }}>{errors.plantLabel}</span>}
                   </div>
 
                   <div>
-                    <label
-                      className="font-Inter-medium text-lg"
-                    >
+                    <label>
                       Features
                     </label>
                     <br />
@@ -149,14 +228,15 @@ const PlantsFormPage = () => {
                       type="text"
                       name="features"
                       placeholder="Species: Echinocereus..."
+                      value={formData.features}
                       onChange={onChange}
+                      ref={featuresRef}
                     />
+                    {errors.features && <span style={{ color: 'red' }}>{errors.features}</span>}
                   </div>
 
                   <div>
-                    <label
-                      className="font-Inter-medium text-lg"
-                    >
+                    <label>
                       Description
                     </label>
                     <br />
@@ -164,8 +244,11 @@ const PlantsFormPage = () => {
                       type="text"
                       name="description"
                       placeholder="Ladyfinger cactus..."
+                      value={formData.description}
                       onChange={onChange}
+                      ref={descriptionRef}
                     />
+                    {errors.description && <span style={{ color: 'red' }}>{errors.description}</span>}
                   </div>
                 </div>
                 <button onClick={validateForm}>Register</button>
