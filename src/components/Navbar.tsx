@@ -37,7 +37,7 @@ const Navbar = () => {
     <header ref={ref} className="h-[80px] font-medium font-raleway-regular bg-lightgray">
       <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
-        <img src={Logo} className="cursor-pointer hover:opacity-75" alt="" />
+        <img src={Logo} className="cursor-pointer hover:opacity-75" alt="PlantPeaceLogo" />
 
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
@@ -49,7 +49,7 @@ const Navbar = () => {
               <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Register</li>
             </Link>
 
-            <Link to={'/error404'}>
+            <Link to={'/products'}>
               <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Products</li>
             </Link>
 

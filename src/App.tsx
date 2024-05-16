@@ -8,6 +8,7 @@ import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
 import RegisterPage from "./pages/RegisterPage/RegisterPage"
 import Error404 from "./pages/Error404/Error404"
 import Footer from "./components/Footer"
+import ProductsPage from "./pages/ProductsPage/ProductsPage"
 
 function App() {
 
@@ -32,6 +33,10 @@ function App() {
           <Route
             path="/error404"
             element={<Error404/>}
+          />
+          <Route
+            path="/products"
+            element={<ProductsPage/>}
           />
           <Route
             path="/about-us"
