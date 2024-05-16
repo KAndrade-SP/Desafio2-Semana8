@@ -1,39 +1,45 @@
 import { Routes, Route } from "react-router-dom"
 
-import './App.css'
+import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
 
 import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage/HomePage"
-import ProductsPage from "./pages/ProductsPage/ProductsPage"
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
 import RegisterPage from "./pages/RegisterPage/RegisterPage"
+import Error404 from "./pages/Error404/Error404"
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      
-      <Routes>
-        <Route
-          path="/"
-          element={<HomePage/>}
-        />
-        <Route
-          path="/register"
-          element={<RegisterPage/>}
-        />
-        <Route
-          path="/products"
-          element={<ProductsPage/>}
-        />
-        <Route
-          path="/about-us"
-          element={ 
-            <AboutUsPage/>
-          }
-        />
-      </Routes>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+
+      <SignedIn>
+        <Navbar />
+        
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage/>}
+          />
+          <Route
+            path="/register"
+            element={<RegisterPage/>}
+          />
+          <Route
+            path="/error404"
+            element={<Error404/>}
+          />
+          <Route
+            path="/about-us"
+            element={ 
+              <AboutUsPage/>
+            }
+          />
+        </Routes>
+      </SignedIn>
     </>
   )
 }

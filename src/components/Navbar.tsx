@@ -4,11 +4,19 @@ import { Link } from "react-router-dom"
 import { PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
 
 import Logo from '../assets/images/navbar-logo.svg'
+import { UserButton, useUser } from "@clerk/clerk-react"
 
 const Navbar = () => {
 
   const ref = useRef<HTMLDivElement>(null)
   const [toggle, setToggle] = useState(false)
+
+  const { isSignedIn, user, isLoaded } = useUser();
+
+  if (!isLoaded) {
+    // Handle loading state however you like
+    return null;
+  }
 
   const outsideClick = (e: MouseEvent) => {
 
@@ -26,7 +34,7 @@ const Navbar = () => {
   document.addEventListener("mousedown", outsideClick)
 
   return (
-    <header ref={ref} className=" h-[80px] font-medium font-raleway-regular bg-lightgray">
+    <header ref={ref} className="h-[80px] font-medium font-raleway-regular bg-lightgray">
       <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
         <img src={Logo} className="cursor-pointer hover:opacity-75" alt="" />
@@ -57,7 +65,7 @@ const Navbar = () => {
               onClick={handleClick}
               className="flex justify-end gap-4 items-center cursor-pointer hover:opacity-75"
             >
-              <p className="lg:m-auto md:text-md">UserIcon</p>
+              <UserButton />
             </a>
           </div>
         </div>
@@ -67,27 +75,35 @@ const Navbar = () => {
         </div>
 
         {/* DROPDOWN MENU */}
-        <div onClick={handleClick} className={toggle?'absolute mt-5 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-4 md:hidden':'hidden'}>
+        <div onClick={handleClick} className={toggle?'absolute mt-2 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-2 md:hidden':'hidden'}>
           <ul>
-            <Link to={'/'} className='flex pl-4 pt-2 items-center'>
+            {isSignedIn 
+            ? <div className="flex pl-4 pt-1 items-center">
+                <UserButton />
+                <p className="px-3 py-4">{user.firstName}</p>
+              </div> 
+            : <></>}
+
+            <Link to={'/'} className='flex pl-4 pt-1 items-center'>
               <PiHouse size={24}/>
               <li className='p-4'>Home</li>
             </Link>
                     
-            <Link to={'/register'} className='flex pl-4 pt-2 items-center'>
+            <Link to={'/register'} className='flex pl-4 pt-1 items-center'>
               <PiNewspaper size={24}/>
               <li className='p-4'>Register</li>
             </Link>
                     
-            <Link to={'/products'} className='flex pl-4 pt-2 items-center'>
+            <Link to={'/error404'} className='flex pl-4 pt-1 items-center'>
               <PiShoppingCartSimple size={24}/>
               <li className='p-4'>Products</li>
             </Link>
                     
-            <Link to={'/about-us'} className='flex pl-4 pt-2 items-center'>
+            <Link to={'/about-us'} className='flex pl-4 pt-1 items-center'>
               <PiInfo size={24}/>
               <li className='p-4'>About Us</li>
-            </Link>       
+            </Link>  
+                  
           </ul>
         </div>
 
