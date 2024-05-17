@@ -4,7 +4,7 @@ export type PlantsType = {
     price: number,
     isInSale: boolean,
     discountPercentage: number,
-    plantLabel: [string, string],
+    plantLabel: string[],
     features: string,
     description: string,
 }

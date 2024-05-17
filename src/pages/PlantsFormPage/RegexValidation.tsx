@@ -1,7 +1,7 @@
 
 export const validName = new RegExp('^(?!.*?s{2})[A-Za-z ]{3,50}$');
 
-export const validSubtitle = new RegExp('^(?!.*?s{2})[A-Za-z ]{8,100}$')
+export const validSubtitle = new RegExp('^(?!.*?s{2})[A-Za-z ]{3,500}$')
 
 export const validPrice = new RegExp ('/([0–9]*[.]{0,1}[0–9]{0,2})/')
 

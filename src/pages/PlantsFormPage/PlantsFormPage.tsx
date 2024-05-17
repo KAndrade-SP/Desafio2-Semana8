@@ -1,97 +1,215 @@
-import { useRef, useState } from "react";
-import {validName, validSubtitle, validPrice, validLabel, validFeatures, validDescription} from './RegexValidation'
+import { useRef, useState, useEffect } from "react";
+import {
+  validName,
+  validSubtitle,
+  validPrice,
+  validLabel,
+  validFeatures,
+  validDescription,
+} from "./RegexValidation";
 import { PlantsType } from "./PlantsType";
 import { PlantsError } from "./PlantsError";
 
 const PlantsFormPage = () => {
-  
-  const [formData, setFormData] = useState <PlantsType>({plantName: "",plantSubtitle:"", price: 0.00, isInSale: Boolean, discountPercentage: 0, plantLabel: ["", ""], features: "", description: ""})
-  console.log(formData)
+  const [formData, setFormData] = useState<PlantsType>({
+    plantName: "",
+    plantSubtitle: "",
+    price: 0,
+    isInSale: false,
+    discountPercentage: 0,
+    plantLabel: [],
+    features: "",
+    description: "",
+  });
+  console.log(formData);
 
-  const plantNameRef = useRef<HTMLInputElement>(null); 
-  const plantSubtitleRef = useRef<HTMLInputElement>(null);  
-  const priceRef = useRef<HTMLInputElement>(null); 
-  const discountPercentageRef = useRef<HTMLInputElement>(null); 
-  const plantLabelRef = useRef<HTMLInputElement>(null); 
-  const featuresRef = useRef<HTMLInputElement>(null); 
-  const descriptionRef = useRef<HTMLInputElement>(null); 
+  const plantNameRef = useRef<HTMLInputElement>(null);
+  const plantSubtitleRef = useRef<HTMLInputElement>(null);
+  const priceRef = useRef<HTMLInputElement>(null);
+  const discountPercentageRef = useRef<HTMLInputElement>(null);
+  const plantLabelRef = useRef<HTMLInputElement>(null);
+  const featuresRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
 
+  const [errors, setErrors] = useState<PlantsError>({ message: "", field: "" });
 
-  const [errors, setErrors] = useState<PlantsError>({plantName: "",plantSubtitle:"", price: 0.00, isInSale: Boolean, discountPercentage: 0, plantLabel: ["", ""], features: "", description: ""})
+  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "plantLabel") {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        plantLabel: [...prevFormData.plantLabel, value],
+      }));
+    }
+  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
-  
+  // const validateForm = (e) => {
+  //   e.preventDefault();
+  //   const plantNameValue = plantNameRef.current?.value || "";
+  //   const plantSubtitleValue = plantSubtitleRef.current?.value || "";
+  //   const priceValue = priceRef.current?.value || "";
+  //   const discountPercentageValueStr = discountPercentageRef.current?.value;
+  //   const discountPercentageValue = discountPercentageValueStr ? parseFloat(discountPercentageValueStr) : null;
+  //   const plantLabelValue = plantLabelRef.current?.value || "";
+  //   const featuresValue = featuresRef.current?.value || "";
+  //   const descriptionValue = descriptionRef.current?.value || "";
 
-  const validateForm = (e) => {
+  //   // setFormData({
+  //   //     ...formData,
+  //   //     plantLabel: [...formData.plantLabel, plantLabelValue],
+  //   //   });
+
+  //   console.log(formData.plantLabel);
+
+  //   if (!plantNameValue || !validName.test(plantNameValue) || plantNameValue === '') {
+  //     setErrors({
+  //       message: `Plant name invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
+  //       field: "plantName",
+  //     });
+  //   }
+
+  //   else if (!plantSubtitleValue || !validSubtitle.test(plantSubtitleValue) || plantSubtitleValue === '') {
+  //     setErrors({
+  //       message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
+  //       field: "plantSubtitle",
+  //     });
+  //   }
+
+  //   else if (!priceValue || !validPrice.test(plantSubtitleValue) || priceValue === '') {
+  //     setErrors({
+  //       message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
+  //       field: "price",
+  //     });
+  //   }
+
+  //   else if (!discountPercentageRef || !discountPercentageValue || discountPercentageValue <= 100 || priceValue === '') {
+  //       setErrors({
+  //         message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
+  //         field: "price",});
+  //       }
+
+  //   };
+  // };
+
+  const validateForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const plantNameValue = plantNameRef.current?.value || '';
-    const plantSubtitleValue = plantSubtitleRef.current?.value || '';
-    const priceValue = priceRef.current?.value || '';
-    const discountPercentageValue = discountPercentageRef.current?.value || '';
-    const plantLabelValue = plantLabelRef.current?.value || '';
-    const featuresValue = featuresRef.current?.value || '';
-    const descriptionValue = descriptionRef.current?.value || '';
+    const plantNameValue = plantNameRef.current?.value || "";
+    const plantSubtitleValue = plantSubtitleRef.current?.value || "";
+    const priceValue = priceRef.current?.value || "";
+    const discountPercentageValueStr = discountPercentageRef.current?.value;
+    const discountPercentageValue = discountPercentageValueStr
+      ? parseFloat(discountPercentageValueStr)
+      : null;
+    const plantLabelValue = plantLabelRef.current?.value || "";
+    const featuresValue = featuresRef.current?.value || "";
+    const descriptionValue = descriptionRef.current?.value || "";
 
-    const errorsData: PlantsType = {plantName: "",plantSubtitle:"", price: Number, isInSale: Boolean, discountPercentage: Number, plantLabel: ["", ""], features: "", description: ""}
+    console.log('OLAIFJAPF[APFLPÁKFAO');
+    console.log(plantLabelValue.length)
+    console.log(plantLabelValue)
+    console.log(plantLabelRef.current?.value)
+    console.log(validLabel.test(plantLabelValue[0]))
 
-    if (!plantNameValue) {
-      errorsData.plantName = 'This field is required';
-    } else if (!validName.test(plantNameValue)) {
-      errorsData.plantName = 'Your entrie is no valid';
-    }
-
-    if (!plantSubtitleValue) {
-      errorsData.plantSubtitle = 'This field is required';
-    } else if (!validSubtitle.test(plantSubtitleValue)) {
-      errorsData.plantSubtitle = 'Your entrie is no valid';
-    }
-
-    if (!priceValue) {
-      errorsData.price = 'This field is required';
-    } else if (!validPrice.test(priceValue)) {
-      errorsData.price = 'Your entrie is no valid';
-    }
-
-    if (!discountPercentageValue) {
-      errorsData.discountPercentage = 'This field is required';
-      //errorsData.isInSale = false
-    } else if (discountPercentageValue <= 0 || discountPercentageValue >= 100) {
-      errorsData.plantName = 'Your entrie is no valid';
-    }
-
-    if (!plantLabelValue) {
-      // errorsData.plantLabel = 'This field is required';
-    }
-
-    if (!featuresValue) {
-      errorsData.features = 'This field is required';
-    } else if (!validFeatures.test(featuresValue)) {
-      errorsData.features = 'Your entrie is no valid';
-    }
-
-    if (!descriptionValue) {
-      errorsData.description = 'This field is required';
-    } else if (!validDescription.test(descriptionValue)) {
-      errorsData.description = 'Your entrie is no valid';
-    }
+    if (
+      !plantNameValue ||
+      !validName.test(plantNameValue) ||
+      plantNameValue === ""
+    ) {
+      setErrors({
+        message: `Plant name invalid: ${
+          plantNameValue ? plantNameValue + "." : "This field is required."
+        }`,
+        field: "plantName",
+      });
+    } 
     
+    else if (
+      !plantSubtitleValue ||
+      !validSubtitle.test(plantSubtitleValue) ||
+      plantSubtitleValue === ""
+    ) {
+      setErrors({
+        message: `Plant subtitle invalid: ${
+          plantSubtitleValue ? plantSubtitleValue + "." : "This field is required."
+        }`,
+        field: "plantSubtitle",
+      });
+    } 
+    
+    else if (
+      !priceValue ||
+      !validPrice.test(priceValue) ||
+      priceValue === ""
+    ) {
+      setErrors({
+        message: `Plant price invalid: ${
+          plantNameValue ? plantNameValue + "." : "This field is required."
+        }`,
+        field: "price",
+      });
+    } 
+    
+    else if (
+      !discountPercentageRef ||
+      !discountPercentageValue ||
+      discountPercentageValue <= 100 ||
+      priceValue === ""
+    ) {
+      setErrors({
+        message: `Plant discount invalid: ${
+          plantNameValue ? plantNameValue + "." : "This field is required."
+        }`,
+        field: "discountPercentage",
+      });
+    }
 
+    
+    else if (
+      plantLabelValue.length) {
+      
+      setErrors({
+        message: `Plant label invalid: ${
+          plantLabelValue ? plantLabelValue + "." : "This field is required."
+        }`,
+        field: "planLabel",
+      });
+    } 
+    
+    
+    else if (
+      !featuresValue ||
+      !validFeatures.test(featuresValue) ||
+      featuresValue === ""
+    ) {
+      setErrors({
+        message: `Plant features invalid: ${
+          featuresValue ? featuresValue + "." : "This field is required."
+        }`,
+        field: "features",
+      });
+    } 
 
-
-    setErrors(errorsData);
-
+    else if (
+      !descriptionValue ||
+      !validDescription.test(descriptionValue) ||
+      descriptionValue === ""
+    ) {
+      setErrors({
+        message: `Plant description invalid: ${
+          descriptionValue ? descriptionValue + "." : "This field is required."
+        }`,
+        field: "description",
+      });
+    } 
   };
-
-
-
-  
 
   return (
     <html>
@@ -105,150 +223,162 @@ const PlantsFormPage = () => {
           <div className="grid grid-cols-2">
             <div>
               <div>
-                <h1 className="">
-                  Plant registration
-                </h1>
+                <h1 className="">Plant registration</h1>
               </div>
               <form>
                 <div className="">
                   <div>
-                    <label className="">
-                      Plant name
-                    </label>
+                    <label className="">Plant name</label>
                     <br />
                     <input
                       className=""
                       type="text"
                       name="plantName"
                       placeholder="Echinocereus Cactus"
-                      value={formData.plantName}
                       onChange={onChange}
                       ref={plantNameRef}
                     />
-                    {errors.plantName && <span>{errors.plantName}</span>}
+                    {errors && errors.field === "plantName" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div>
-                    <label
-                    >
-                      Plant subtitle
-                    </label>
+                    <label>Plant subtitle</label>
                     <br />
                     <input
                       type="text"
                       name="plantSubtitle"
                       placeholder="A majestic addition to your plant collection"
-                      value={formData.plantSubtitle}
                       onChange={onChange}
                       ref={plantSubtitleRef}
                     />
-                    {errors.plantSubtitle && <span style={{ color: 'red' }}>{errors.plantSubtitle}</span>}
+                    {errors && errors.field === "plantSubtitle" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div>
-                    <label>
-                      Plant type
-                    </label>
+                    <label>Plant type</label>
                     <br />
                     <input
                       type="text"
                       name="plantLabel"
                       placeholder="Cactus"
-                      value={formData.plantType}
-                      onChange={onChange}
+                      onBlur={onBlur}
                       ref={plantLabelRef}
                     />
-                    {errors.plantLabel && <span style={{ color: 'red' }}>{errors.plantLabel}</span>}
+                    {errors && errors.field === "plantLabel" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div>
                     <div>
-                      <label
-                        className="font-Inter-medium text-lg"
-                      >
-                        Price
-                      </label>
+                      <label className="font-Inter-medium text-lg">Price</label>
                       <br />
                       <input
                         type="number"
                         name="price"
                         placeholder="$139.99"
-                        value={formData.price}
                         onChange={onChange}
                         ref={priceRef}
                       />
-                      {errors.price && <span style={{ color: 'red' }}>{errors.price}</span>}
+                      {errors && errors.field === "price" ? (
+                        <span>{errors.message}</span>
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div>
-                      <label
-                      >
-                        Discount percentage
-                      </label>
+                      <label>Discount percentage</label>
                       <br />
                       <input
                         type="number"
                         name="discountPercentage"
                         placeholder="20%"
-                        value={formData.discountPercentage}
                         onChange={onChange}
                         ref={discountPercentageRef}
                       />
-                      {errors.discountPercentage && <span style={{ color: 'red' }}>{errors.discountPercentage}</span>}
+                      {errors && errors.field === "discountPercentage" ? (
+                        <span>{errors.message}</span>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label
-                    >
-                      Label:{" "}
-                    </label>
+                    <label>Label: </label>
                     <div>
-                      <div className="flex flex-row max-w-xl gap-3 justify-center items-center">
-                        <div className=" font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="plantLabel" onChange={onChange} ref={plantLabelRef}/>
-                          <label defaultChecked>
-                            Indoor
-                          </label>
+                      <div>
+                        <div>
+                          <input
+                            type="radio"
+                            name="plantLabel"
+                            onChange={onChange}
+                            value="indoor"
+                            ref={plantLabelRef}
+                          />
+                          <label defaultChecked>Indoor</label>
                         </div>
-                        <div className="font-Inter-medium text-base flex flex-row max-w-xl gap-1 justify-center items-center">
-                          <input type="checkbox" name="plantLabel" onChange={onChange} ref={plantLabelRef}/>
+                        <div>
+                          <input
+                            type="radio"
+                            name="plantLabel"
+                            onChange={onChange}
+                            value="outdoor"
+                            ref={plantLabelRef}
+                          />
                           <label htmlFor="outdoor">Outdoor</label>
                         </div>
                       </div>
                     </div>
-                    {errors.plantLabel && <span style={{ color: 'red' }}>{errors.plantLabel}</span>}
+                    {errors && errors.field === "plantLabel" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div>
-                    <label>
-                      Features
-                    </label>
+                    <label>Features</label>
                     <br />
                     <input
                       type="text"
                       name="features"
                       placeholder="Species: Echinocereus..."
-                      value={formData.features}
                       onChange={onChange}
                       ref={featuresRef}
                     />
-                    {errors.features && <span style={{ color: 'red' }}>{errors.features}</span>}
+                    {errors && errors.field === "features" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div>
-                    <label>
-                      Description
-                    </label>
+                    <label>Description</label>
                     <br />
                     <input
                       type="text"
                       name="description"
                       placeholder="Ladyfinger cactus..."
-                      value={formData.description}
                       onChange={onChange}
                       ref={descriptionRef}
                     />
-                    {errors.description && <span style={{ color: 'red' }}>{errors.description}</span>}
+                    {errors && errors.field === "description" ? (
+                      <span>{errors.message}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
                 <button onClick={validateForm}>Register</button>
