@@ -12,8 +12,8 @@ const ProductsPage = () => {
             <h3 className=" text-lunargreen font-ebgaramond-bold text-3xl md:pb-3 md:text-4xl lg:pb-2 2xl:text-6.5xl">Echinocereus Cactus</h3>
             <span className=" text-lg md:py-3 lg:pt-0 lg:pb-2 font-lato-bold 2xl:text-2xl  text-darkgray" >A Majestic Addition to Your Plant Collection</span>
             <div>
-              <button className=' mr-4 lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl  w-20 h-10 text-flaggreen font-raleway-regular'>indoor</button>
-              <button className=' lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl w-20 h-10 text-flaggreen font-raleway-regular'>cactus</button>          
+              <button className=' mr-4 lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl  w-20 h-10 text-flaggreen font-raleway-regular pointer-events-none'>indoor</button>
+              <button className=' lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl w-20 h-10 text-flaggreen font-raleway-regular pointer-events-none'>cactus</button>          
             </div>
             <span className=' pt-3 lg:pt-2 font-lato-bold text-xl'>$139.99</span>
             <button className='h-14 w-44 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5'><a href="">Check out</a></button>            

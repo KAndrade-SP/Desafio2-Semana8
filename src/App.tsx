@@ -44,10 +44,6 @@ function App() {
               <AboutUsPage/>
             }
           />
-          <Route 
-            path="/products"
-            element={<ProductsPage/>}
-          />
         </Routes>
 
         <Footer />

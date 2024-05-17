@@ -51,7 +51,7 @@ const Navbar = () => {
               <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Register</li>
             </Link>
 
-            <Link to={'/error404'}>
+            <Link to={'/products'}>
               <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Products</li>
             </Link>
 
