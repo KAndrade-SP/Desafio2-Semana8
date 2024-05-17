@@ -18,6 +18,7 @@ export default {
         whitegreen: '#F6FFF6',
         almblack: '#1E1E24',
         grayishgreen: '#F0F1EE',
+        graybackground:'#F0F0F0',
       },
       fontFamily: {
         ebgaramond: ['EBGaramond-regular', 'serif'],

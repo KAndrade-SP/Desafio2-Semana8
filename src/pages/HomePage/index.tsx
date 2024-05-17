@@ -10,6 +10,7 @@ import Plant2 from "./assets/plant2.png";
 import Carousel1 from "./components/Carousel1";
 import Carousel2 from "./components/Carousel2";
 import { EmblaOptionsType } from "embla-carousel";
+import { Cta } from "./components/CTA"
 
 const OPTIONS: EmblaOptionsType = { loop: false };
 const SLIDE_COUNT = 10;
@@ -19,37 +20,16 @@ export function HomePage() {
   return (
     <div>
       <main className="w-full min-h-svh text-medgray">
-        <section className="px-28 py-9 flex relative min-h-svh bg-grayishgreen">
-          <div className="flex relative flex-row items-center justify-between gap-28 z-10">
-            <div className="flex flex-col justify-center items-start gap-6">
-              <div className="flex flex-row justify-center items-center gap-1">
-                <div className="w-8 h-1 bg-almblack "></div>
-                <p className="font-pacifico text-almblack">Love for Nature</p>
-              </div>
-              <h1 className="text-6xl font-ebgaramond-bold text-lunargreen">
-                Discover Your <span className="text-avacado">Green</span> <br />
-                Side
-              </h1>
-              <p className="text-base font-raleway-regular">
-                We are your one-stop destination for all things green and
-                growing. Our website <br />
-                offers a wide array of stunning plants, ranging from vibrant
-                flowers to lush indoor <br />
-                foliage, allowing you to create your very own green oasis.
-              </p>
-              <button className="py-4 px-10 font-raleway-regular bg-lunargreen flex-row text-almwhite text-base">
-                Shop Now
-              </button>
-            </div>
-          </div>
-          <img className="absolute right-0 bottom-0" src={Plant1} alt="" />
+        <section className="md:px-28 px-8 py-9 flex relative min-h-svh bg-graybackground">
+          <Cta/>
+          <img className="hidden xl:flex absolute right-0 bottom-0" src={Plant1} alt="" />
           <img
-            className="absolute left-0 bottom-0 translate-y-[38%]"
+            className="hidden md:flex absolute left-0 bottom-0 translate-y-[38%]"
             src={Plant2}
             alt=""
           />
 
-          <div className="flex flex-row items-center justify-start absolute bottom-0 left-0 w-full px-28 pb-8">
+          <div className="flex flex-row items-center justify-start absolute bottom-0 left-0 w-full md:px-28 px-8 pb-8">
             <a
               className="flex flex-row items-center justify-center gap-2"
               href=""
@@ -60,7 +40,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="p-28 gap-20 bg-almwhite">
+        <section className="md:p-28 p-8 gap-20 bg-almwhite">
           <div className="flex flex-col items-center justify-center gap-20">
             <div className="flex flex-col gap-4 items-center text-center">
               <h1 className="text-6xl font-ebgaramond-bold text-lunargreen">
@@ -74,7 +54,7 @@ export function HomePage() {
                 maintaining healthy and thriving plants.
               </p>
             </div>
-            <div className="flex flex-row items-center justify-center gap-28 font-raleway-regular pb-20">
+            <div className="flex flex-col md:flex-row items-center justify-center lg:gap-28 gap-8 font-raleway-regular pb-20 text-center">
               <div className="flex flex-col gap-6 items-center justify-center">
                 <WaterdropIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
@@ -113,10 +93,10 @@ export function HomePage() {
               </div>
             </div>
             <div className="flex flex-row items-start justify-center gap-28">
-              <div className="w-full">
+              <div className="hidden 2xl:flex w-full">
                 <img src={Img1} alt="" />
               </div>
-              <div className="w-full">
+              <div className="hidden 2xl:flex w-full">
                 <img src={Img2} alt="" />
               </div>
               <div className="flex flex-col w-full gap-8 items-start justify-center content-start font-raleway-regular">
@@ -145,7 +125,7 @@ export function HomePage() {
         </section>
         <section className="flex flex-col items-center justify-center gap-24 py-12 bg-grayishgreen w-full ">
           <div className="gap-48 w-full flex flex-col justify-center items-center">
-            <h2 className="text-6xl font-ebgaramond-bold text-lunargreen">
+            <h2 className="text-6xl font-ebgaramond-bold text-lunargreen p-8">
               This Weeks Most Popular{" "}
               <span className="text-avacado">And Best Selling</span>
             </h2>
@@ -155,7 +135,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="gap-48 w-full flex flex-col justify-center items-center">
-            <h2 className="text-6xl font-ebgaramond-bold text-avacado">
+            <h2 className="text-6xl font-ebgaramond-bold text-avacado p-8">
               Plants In <span className="text-lunargreen">Sale</span>
             </h2>
 

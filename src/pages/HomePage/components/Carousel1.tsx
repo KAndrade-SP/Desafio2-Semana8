@@ -15,7 +15,7 @@ const Carousel1: React.FC<PropType> = (props) => {
   return (
     <section className="m-auto w-full ">
       <div className="overflow-hidden w-full" ref={emblaRef}>
-        <div className="flex -ml-4 w-full pl-20">
+        <div className="flex -ml-4 w-full pl-8 md:pl-28">
           {slides.map((index) => (
               <Card key={index}/>
           ))}
