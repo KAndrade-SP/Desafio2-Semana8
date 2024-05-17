@@ -3,7 +3,7 @@ export type PlantsType = {
     plantSubtitle: string,
     price: number,
     isInSale: boolean,
-    discountPercentage: number,
+    discountPercentage?: number,
     plantLabel: string[],
     features: string,
     description: string,

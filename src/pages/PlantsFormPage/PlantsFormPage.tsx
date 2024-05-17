@@ -1,14 +1,13 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import {
   validName,
   validSubtitle,
   validPrice,
-  validLabel,
   validFeatures,
   validDescription,
-} from "./RegexValidation";
-import { PlantsType } from "./PlantsType";
-import { PlantsError } from "./PlantsError";
+} from "./regex/RegexValidation";
+import { PlantsType } from "./types/PlantsType";
+import { PlantsError } from "./types/PlantsError";
 
 const PlantsFormPage = () => {
   const [formData, setFormData] = useState<PlantsType>({
@@ -21,7 +20,6 @@ const PlantsFormPage = () => {
     features: "",
     description: "",
   });
-  console.log(formData);
 
   const plantNameRef = useRef<HTMLInputElement>(null);
   const plantSubtitleRef = useRef<HTMLInputElement>(null);
@@ -45,61 +43,21 @@ const PlantsFormPage = () => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+
+    if (name === "plantLabel" || name === "plantRadioLabel") {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        plantLabel: [...prevFormData.plantLabel, value],
+      }));
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
-  // const validateForm = (e) => {
-  //   e.preventDefault();
-  //   const plantNameValue = plantNameRef.current?.value || "";
-  //   const plantSubtitleValue = plantSubtitleRef.current?.value || "";
-  //   const priceValue = priceRef.current?.value || "";
-  //   const discountPercentageValueStr = discountPercentageRef.current?.value;
-  //   const discountPercentageValue = discountPercentageValueStr ? parseFloat(discountPercentageValueStr) : null;
-  //   const plantLabelValue = plantLabelRef.current?.value || "";
-  //   const featuresValue = featuresRef.current?.value || "";
-  //   const descriptionValue = descriptionRef.current?.value || "";
-
-  //   // setFormData({
-  //   //     ...formData,
-  //   //     plantLabel: [...formData.plantLabel, plantLabelValue],
-  //   //   });
-
-  //   console.log(formData.plantLabel);
-
-  //   if (!plantNameValue || !validName.test(plantNameValue) || plantNameValue === '') {
-  //     setErrors({
-  //       message: `Plant name invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
-  //       field: "plantName",
-  //     });
-  //   }
-
-  //   else if (!plantSubtitleValue || !validSubtitle.test(plantSubtitleValue) || plantSubtitleValue === '') {
-  //     setErrors({
-  //       message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
-  //       field: "plantSubtitle",
-  //     });
-  //   }
-
-  //   else if (!priceValue || !validPrice.test(plantSubtitleValue) || priceValue === '') {
-  //     setErrors({
-  //       message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
-  //       field: "price",
-  //     });
-  //   }
-
-  //   else if (!discountPercentageRef || !discountPercentageValue || discountPercentageValue <= 100 || priceValue === '') {
-  //       setErrors({
-  //         message: `Plant subtitle invalid: ${plantNameValue ? plantNameValue + '.' : 'This field is required.'}`,
-  //         field: "price",});
-  //       }
-
-  //   };
-  // };
-
-  const validateForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const validateForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const plantNameValue = plantNameRef.current?.value || "";
     const plantSubtitleValue = plantSubtitleRef.current?.value || "";
@@ -112,12 +70,6 @@ const PlantsFormPage = () => {
     const featuresValue = featuresRef.current?.value || "";
     const descriptionValue = descriptionRef.current?.value || "";
 
-    console.log('OLAIFJAPF[APFLPÁKFAO');
-    console.log(plantLabelValue.length)
-    console.log(plantLabelValue)
-    console.log(plantLabelRef.current?.value)
-    console.log(validLabel.test(plantLabelValue[0]))
-
     if (
       !plantNameValue ||
       !validName.test(plantNameValue) ||
@@ -129,22 +81,30 @@ const PlantsFormPage = () => {
         }`,
         field: "plantName",
       });
-    } 
-    
-    else if (
+    } else if (
       !plantSubtitleValue ||
       !validSubtitle.test(plantSubtitleValue) ||
       plantSubtitleValue === ""
     ) {
       setErrors({
         message: `Plant subtitle invalid: ${
-          plantSubtitleValue ? plantSubtitleValue + "." : "This field is required."
+          plantSubtitleValue
+            ? plantSubtitleValue + "."
+            : "This field is required."
         }`,
         field: "plantSubtitle",
       });
-    } 
-    
-    else if (
+    } else if (
+      formData.plantLabel.length <= 1 ||
+      formData.plantLabel.some((label) => label === "")
+    ) {
+      setErrors({
+        message: `Plant label invalid: ${
+          plantLabelValue ? plantLabelValue + "." : "This field is required."
+        }`,
+        field: "plantLabel",
+      });
+    } else if (
       !priceValue ||
       !validPrice.test(priceValue) ||
       priceValue === ""
@@ -155,9 +115,7 @@ const PlantsFormPage = () => {
         }`,
         field: "price",
       });
-    } 
-    
-    else if (
+    } else if (
       !discountPercentageRef ||
       !discountPercentageValue ||
       discountPercentageValue <= 100 ||
@@ -169,22 +127,7 @@ const PlantsFormPage = () => {
         }`,
         field: "discountPercentage",
       });
-    }
-
-    
-    else if (
-      plantLabelValue.length) {
-      
-      setErrors({
-        message: `Plant label invalid: ${
-          plantLabelValue ? plantLabelValue + "." : "This field is required."
-        }`,
-        field: "planLabel",
-      });
-    } 
-    
-    
-    else if (
+    } else if (
       !featuresValue ||
       !validFeatures.test(featuresValue) ||
       featuresValue === ""
@@ -195,9 +138,7 @@ const PlantsFormPage = () => {
         }`,
         field: "features",
       });
-    } 
-
-    else if (
+    } else if (
       !descriptionValue ||
       !validDescription.test(descriptionValue) ||
       descriptionValue === ""
@@ -208,7 +149,7 @@ const PlantsFormPage = () => {
         }`,
         field: "description",
       });
-    } 
+    }
   };
 
   return (
@@ -321,17 +262,17 @@ const PlantsFormPage = () => {
                         <div>
                           <input
                             type="radio"
-                            name="plantLabel"
+                            name="plantRadioLabel"
                             onChange={onChange}
                             value="indoor"
                             ref={plantLabelRef}
                           />
-                          <label defaultChecked>Indoor</label>
+                          <label>Indoor</label>
                         </div>
                         <div>
                           <input
                             type="radio"
-                            name="plantLabel"
+                            name="plantRadioLabel"
                             onChange={onChange}
                             value="outdoor"
                             ref={plantLabelRef}
