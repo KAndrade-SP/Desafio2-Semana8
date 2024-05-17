@@ -6,7 +6,7 @@ import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage/HomePage"
 import ProductsPage from "./pages/ProductsPage/ProductsPage"
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
-import RegisterPage from "./pages/RegisterPage/RegisterPage"
+import PlantsFormPage from "./pages/PlantsFormPage/PlantsFormPage"
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
         />
         <Route
           path="/register"
-          element={<RegisterPage/>}
+          element={<PlantsFormPage/>}
         />
         <Route
           path="/products"
