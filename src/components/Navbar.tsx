@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
 
         {/* DROPDOWN MENU */}
-        <div onClick={handleClick} className={toggle?'absolute mt-2 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado z-10 px-4 py-1 md:hidden':'hidden'}>
+        <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado px-4 py-1 md:hidden':'hidden'}>
           <ul>
             {isSignedIn 
             ? <div className="flex pl-4 pt-0.5 items-center">
