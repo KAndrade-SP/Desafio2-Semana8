@@ -5,8 +5,9 @@ import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
 import Navbar from './components/Navbar'
 import HomePage from "./pages/HomePage/HomePage"
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
-import RegisterPage from "./pages/RegisterPage/RegisterPage"
+import PlantsFormPage from "./pages/PlantsFormPage/PlantsFormPage"
 import Error404 from "./pages/Error404/Error404"
+import Footer from "./components/Footer"
 import ProductsPage from "./pages/ProductsPage/ProductsPage"
 
 function App() {
@@ -27,11 +28,15 @@ function App() {
           />
           <Route
             path="/register"
-            element={<RegisterPage/>}
+            element={<PlantsFormPage/>}
           />
           <Route
             path="/error404"
             element={<Error404/>}
+          />
+          <Route
+            path="/products"
+            element={<ProductsPage/>}
           />
           <Route
             path="/about-us"
@@ -44,6 +49,8 @@ function App() {
             element={<ProductsPage/>}
           />
         </Routes>
+
+        <Footer />
       </SignedIn>
     </>
   )
