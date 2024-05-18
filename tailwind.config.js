@@ -38,6 +38,9 @@ export default {
 
       screens: {
         '3xl': '1800px',
+        '4.5xl': '2.625rem',
+        '4.7xl': '2.75rem',
+        'xsm': '0.9375rem',
       }
     },
   },
