@@ -22,11 +22,11 @@ export function HomePage() {
       <main className="w-full min-h-svh text-medgray">
         <section className="md:px-28 px-8 py-9 flex relative min-h-svh bg-graybackground">
           <Cta/>
-          <img className="hidden xl:flex absolute right-0 bottom-0" src={Plant1} alt="" />
+          <img className="hidden xl:flex absolute right-0 bottom-0" src={Plant1} alt="Plants on a table" />
           <img
             className="hidden md:flex absolute left-0 bottom-0 translate-y-[38%]"
             src={Plant2}
-            alt=""
+            alt="Plant leaves"
           />
 
           <div className="flex flex-row items-center justify-start absolute bottom-0 left-0 w-full md:px-28 px-8 pb-8">
@@ -94,13 +94,13 @@ export function HomePage() {
             </div>
             <div className="flex flex-row items-start justify-center gap-28">
               <div className="hidden 2xl:flex w-full">
-                <img src={Img1} alt="" />
+                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img1} alt="Plants in a room with a person portrait on the wall" />
               </div>
               <div className="hidden 2xl:flex w-full">
-                <img src={Img2} alt="" />
+                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img2} alt="Plants in a garden" />
               </div>
               <div className="flex flex-col w-full gap-8 items-start justify-center content-start font-raleway-regular">
-                <img className="w-full" src={Img3} alt="" />
+                <img className="w-full hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img3} alt="Bonsai image" />
                 <p>
                   Our website offers a wide array of stunning plants, ranging
                   from vibrant flowers to lush indoor foliage, allowing you to
@@ -116,7 +116,7 @@ export function HomePage() {
                   the way. Get ready to explore our virtual garden and discover
                   the joys of gardening with us!
                 </p>
-                <button className="py-4 px-10 font-raleway bg-lunargreen flex-row text-almwhite text-base">
+                <button className="h-14 w-48 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all">
                   See more photos
                 </button>
               </div>
