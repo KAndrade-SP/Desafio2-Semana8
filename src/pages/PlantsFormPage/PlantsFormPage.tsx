@@ -1,4 +1,7 @@
-import { useRef, useState } from "react"
+import React, { useState } from 'react'
+ 
+import axios from 'axios';
+ 
 import {
   validName,
   validSubtitle,
@@ -7,12 +10,25 @@ import {
   validType
 } from "./regex/RegexValidation"
  
-import { PlantsType } from "./types/PlantsType"
 import { PlantsError } from "./types/PlantsError"
  
-const PlantsFormPage = () => {
+import PlantImg from '../../assets/images/plant-form.png'
  
-  const [formData, setFormData] = useState<PlantsType>({
+type PlantType = {
+  id: number,
+  plantName: string,
+  plantSubtitle: string,
+  plantType: string,
+  price: number,
+  isInSale: boolean,
+  discountPercentage: number,
+  plantLabel: string,
+  features: string,
+  description: string,
+}
+ 
+const PlantsFormPage = () => {
+  const [plantData, setPlantData] = useState<PlantType>({
     id: 0,
     plantName: "",
     plantSubtitle: "",
@@ -25,325 +41,284 @@ const PlantsFormPage = () => {
     description: "",
   })
  
-  const plantNameRef = useRef<HTMLInputElement>(null)
-  const plantSubtitleRef = useRef<HTMLInputElement>(null)
-  const priceRef = useRef<HTMLInputElement>(null)
-  const discountPercentageRef = useRef<HTMLInputElement>(null)
-  const plantTypeRef = useRef<HTMLInputElement>(null)
-  const plantRadioLabelRef = useRef<HTMLInputElement>(null)
-  const featuresRef = useRef<HTMLInputElement>(null)
-  const descriptionRef = useRef<HTMLInputElement>(null)
-
-  const plantNameValue = plantNameRef.current?.value || ""
-    const plantSubtitleValue = plantSubtitleRef.current?.value || ""
-    const priceValue = priceRef.current? parseInt(priceRef.current.value) : 0;
-    const discountPercentageValue = discountPercentageRef.current? parseInt(discountPercentageRef.current.value) : 0;
-    const plantTypeValue = plantTypeRef.current?.value || ""
-    const plantRadioLabelValue = plantRadioLabelRef.current?.value || ""
-    const featuresValue = featuresRef.current?.value || ""
-    const descriptionValue = descriptionRef.current?.value || ""
- 
   const [errors, setErrors] = useState<PlantsError>({ message: "", field: "" })
-  const [isInSale, setIsInSale] = useState(false)
-  const [isValidated, setIsValidated] = useState(false)
  
-  const [lastId, setLastId] = useState<number>(0);
-
-  const validateForm = () => {
-    
-    if (!plantNameValue || !validName.test(plantNameValue) || plantNameValue === "") {
+  const validate = () => {
+ 
+    if (!plantData.plantName || !validName.test(plantData.plantName) || plantData.plantName === "") {
  
       setErrors({
         message: `Plant name invalid: ${
-          plantNameValue ? plantNameValue + "." : "This field is required."
+          plantData.plantName ? plantData.plantName + "." : "This field is required."
         }`,
         field: "plantName",
       })
-      setIsValidated(false)
-      
-      
+      return false
  
-    } else if (!plantSubtitleValue || !validSubtitle.test(plantSubtitleValue) || plantSubtitleValue === "") {
- 
+    } else if (!plantData.plantSubtitle || !validSubtitle.test(plantData.plantSubtitle) || plantData.plantSubtitle === "") {
+     
       setErrors({
         message: `Plant subtitle invalid: ${
-          plantSubtitleValue
-            ? plantSubtitleValue + "."
+          plantData.plantSubtitle
+            ? plantData.plantSubtitle + "."
             : "This field is required."
         }`,
         field: "plantSubtitle",
       })
-      setIsValidated(false)
-
+      return false
  
-    } else if (!plantTypeValue || !validType.test(plantTypeValue) || plantTypeValue === "") {
+    } else if (!plantData.plantType || !validType.test(plantData.plantType) || plantData.plantType === "") {
  
       setErrors({
         message: `Plant type invalid: ${
-          plantTypeValue ? plantTypeValue + "." : "this field is required."
+          plantData.plantType ? plantData.plantType + "." : "this field is required."
         }`,
         field: "plantType",
       })
-      setIsValidated(false)
+      return false
  
-    } else if (!priceValue || priceValue === null || typeof priceValue != 'number') {
+    } else if (plantData.price <= 0 || isNaN(plantData.price)) {
+     
       setErrors({
         message: `Plant price invalid: ${
-          priceValue ? priceValue + "." : "This field is required."
+          plantData.price ? plantData.price + "." : "This field is required."
         }`,
         field: "price",
       })
-      setIsValidated(false)
+      return false
  
-    } else if (!featuresValue || !validFeatures.test(featuresValue) || featuresValue === "") {
+    } else if (plantData.discountPercentage < 0) {
+ 
+      setErrors({
+        message: `Plant discount invalid: ${
+          plantData.discountPercentage ? plantData.discountPercentage + "." : "This field is required."
+        }`,
+        field: "discountPercentage",
+      })
+      return false
+     
+      // arrumar validação do label
+    } else if (plantData.plantLabel === null) {
+ 
+      setErrors({
+        message: `Plant label invalid: ${
+          plantData.plantLabel ? plantData.plantLabel + "." : "This field is required."
+        }`,
+        field: "plantLabel",
+      })
+      return false
+ 
+    } else if (!plantData.features || !validFeatures.test(plantData.features) || plantData.features === "") {
  
       setErrors({
         message: `Plant features invalid: ${
-          featuresValue ? featuresValue + "." : "This field is required."
+          plantData.features ? plantData.features + "." : "This field is required."
         }`,
         field: "features",
       })
-      setIsValidated(false)
+      return false
  
-    } else if (!descriptionValue || !validDescription.test(descriptionValue) || descriptionValue === "") {
+    } else if (!plantData.description || !validDescription.test(plantData.description) || plantData.description === "") {
        
       setErrors({
         message: `Plant description invalid: ${
-          descriptionValue ? descriptionValue + "." : "This field is required."
+          plantData.description ? plantData.description + "." : "This field is required."
         }`,
         field: "description",
       })
-      setIsValidated(false)
+      return false
+ 
     } else {
-      // if(discountPercentageValue === null) {
-      //   setIsInSale(false)
-      // }
-      // else {
-      //   setIsInSale(true)
-        
-      // }
-      setIsValidated(true)
-      setErrors({message: '', field:''})
-      return isValidated
+     
+      if (plantData.discountPercentage > 0) {
+        plantData.isInSale = true
+      }
+ 
+      setErrors({message: '', field: ''})
+      return true
     }
-
   }
-
-  const submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
+ 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+   
+    setPlantData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+ 
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    validateForm()
-
-    if (isValidated) {
-      setFormData({
-        id: lastId + 1,
-        plantName: plantNameValue,
-        plantSubtitle: plantSubtitleValue,
-        plantType: plantTypeValue,
-        price: priceValue,
-        isInSale: isInSale,
-        discountPercentage: discountPercentageValue,
-        plantLabel: plantRadioLabelValue,
-        features: featuresValue,
-        description: descriptionValue,
-      })
-      setLastId(lastId + 1);
-      console.log(formData)
-      console.log(isInSale)
-      console.log(discountPercentageValue)
+ 
+    const validation = validate()
+ 
+    if (!validation) {
+      console.log('Dados inválidos')
+    } else {
+      const plantDataComplete = {
+        ...plantData,
+        discountPercentage: plantData.discountPercentage ? Number(plantData.discountPercentage) : undefined
+      }
+ 
+      axios.get('http://localhost:3000/plants')
+        .then(response => {
+          const plants = response.data
+          const lastId = plants.length > 0 ? plants[plants.length - 1].id : 0
+          const newId = lastId + 1
+          plantDataComplete.id = newId
+ 
+          axios.post('http://localhost:3000/plants', plantDataComplete)
+            .then((response) => {
+              console.log('Dados enviados com sucesso:', response.data)
+            })
+            .catch((error) => {
+              console.error('Erro ao enviar dados:', error)
+            })
+        })
+          .catch(error => {
+            console.error('Erro ao obter filmes:', error)
+        })
+      plantData.isInSale = false
+      console.log(plantDataComplete)
     }
-    
-    
-    
-  } 
-  
+  }
+ 
   return (
-      <section className="bg-lightgray max-w-screen ">
+    <section className="bg-lightgray h-screen w-screen">
+      <form className='flex flex-col md:flex-row items-center md:justify-around' onSubmit={handleSubmit}>
+       
+        <div className="flex flex-col gap-6 justify-center">
  
-        <header>
-          <p>header</p>
-        </header>
+          <div className="border-b-2 border-medgray border-opacity-35">
+            <h2 className="text-lunargreen mb-2 pb-2 font-inter-semibold text-xl">Plant registration</h2>
+          </div>
  
-        <main>
-          <p>main</p>
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Plant name
+            </label>
+            <input type="text" name="plantName" value={plantData.plantName} onChange={handleChange} />
+            {errors && errors.field === "plantName" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>
+         
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Plant subtitle
+            </label>
+            <input type="text" name="plantSubtitle" value={plantData.plantSubtitle} onChange={handleChange} />
+            {errors && errors.field === "plantSubtitle" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>
+         
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Plant type
+            </label>
+            <input type="text" name="plantType" value={plantData.plantType} onChange={handleChange} />
+            {errors && errors.field === "plantType" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>
  
-          <div className="grid grid-cols-2">
-            <div>
-              <div>
-                <h1 className="">Plant registration</h1>
-              </div>
- 
-              <form onSubmit={submitForm}>
-                <div className="">
- 
-                  <div>
-                    <label className="">Plant name</label>
-                    <br />
-                    <input
-                      className=""
-                      type="text"
-                      name="plantName"
-                      placeholder="Echinocereus Cactus"
-                      ref={plantNameRef}
-                      defaultValue={formData.plantName}
-                    />
-                    {errors && errors.field === "plantName" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                  <div>
-                    <label>Plant subtitle</label>
-                    <br />
-                    <input
-                      type="text"
-                      name="plantSubtitle"
-                      placeholder="A majestic addition to your plant collection"
-                      ref={plantSubtitleRef}
-                      defaultValue={formData.plantSubtitle}
-                    />
-                    {errors && errors.field === "plantSubtitle" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                  <div>
-                    <label>Plant type</label>
-                    <br />
-                    <input
-                      type="text"
-                      name="plantType"
-                      placeholder="Cactus"
-
-                      ref={plantTypeRef}
-                      defaultValue={formData.plantType}
-                    />
-                    {errors && errors.field === "plantType" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                  <div>
-                    <div>
-                      <label className="font-Inter-medium text-lg">Price</label>
-                      <br />
-                      <input
-                        type="number"
-                        name="price"
-                        placeholder="$139.99"
-                        ref={priceRef}
-                        defaultValue={formData.price}
-                      />
-                      {errors && errors.field === "price" ? (
-                        <span>{errors.message}</span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                    <div>
-                      <label>Discount percentage</label>
-                      <br />
-                      <input
-                        type="number"
-                        name="discountPercentage"
-                        placeholder="20%"
-                        ref={discountPercentageRef}
-                        defaultValue={formData.discountPercentage}
-                      />
-                      {errors && errors.field === "discountPercentage" ? (
-                        <span>{errors.message}</span>
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  </div>
- 
-                  <div>
-                    <label>Label: </label>
-                    <div>
-                      <div>
-                        <div>
-                          <input
-                            type="radio"
-                            name="plantRadioLabel"
-                            value="indoor"
-                            ref={plantRadioLabelRef}
-                          />
-                          <label>Indoor</label>
-                        </div>
-                        <div>
-                          <input
-                            type="radio"
-                            name="plantRadioLabel"
-                            value="outdoor"
-                            ref={plantRadioLabelRef}
-                          />
-                          <label htmlFor="outdoor">Outdoor</label>
-                        </div>
-                      </div>
-                    </div>
-                    {errors && errors.field === "plantLabel" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                  <div>
-                    <label>Features</label>
-                    <br />
-                    <input
-                      type="text"
-                      name="features"
-                      placeholder="Species: Echinocereus..."
-                      ref={featuresRef}
-                      defaultValue={formData.features}
-                    />
-                    {errors && errors.field === "features" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                  <div>
-                    <label>Description</label>
-                    <br />
-                    <input
-                      type="text"
-                      name="description"
-                      placeholder="Ladyfinger cactus..."
-                      ref={descriptionRef}
-                      defaultValue={formData.description}
-                    />
-                    {errors && errors.field === "description" ? (
-                      <span>{errors.message}</span>
-                    ) : (
-                      ""
-                    )}
-                  </div>
- 
-                </div>
-                <button >Register</button>
-              </form>
- 
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-lunargreen font-inter-semibold">
+                Price
+              </label>
+              <input type="number" name="price" placeholder="$139.99" value={plantData.price || ''} onChange={handleChange} />
+              {errors && errors.field === "price" ? (
+                <span>{errors.message}</span>
+              ) : (
+                <></>
+              )}
             </div>
            
-            <div>image</div>
- 
+            <div className="flex flex-col gap-2">
+              <label className="text-lunargreen font-inter-semibold">
+                Discount percentage
+              </label>
+              <input type="number" name="discountPercentage" placeholder="20%" value={plantData.discountPercentage || 0} onChange={handleChange} />
+              {errors && errors.field === "discountPercentage" ? (
+                <span>{errors.message}</span>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
-        </main>
+         
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Label:
+            </label>
  
-        <footer>
-          <p>footer</p>
-        </footer>
-      </section>
+            <div className="flex flex-row gap-2">
+              <input
+                type="radio"
+                name="plantLabel"
+                value="indoor"
+                checked={plantData.plantLabel === 'indoor'}
+                onChange={handleChange}
+              />
+              <span>Indoor</span>
+              <input
+                type="radio"
+                name="plantLabel"
+                value="outdoor"
+                checked={plantData.plantLabel === 'outdoor'}
+                onChange={handleChange}
+              />
+              <span>Outdoor</span>
+            </div>
+            {errors && errors.field === "plantLabel" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>
+         
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Features
+            </label>
+            <textarea name="features" value={plantData.features} onChange={handleChange} />
+            {errors && errors.field === "features" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>
+         
+          <div className="flex flex-col gap-2">
+            <label className="text-lunargreen font-inter-semibold">
+              Description
+            </label>
+            <textarea name="description" value={plantData.description} onChange={handleChange} />
+            {errors && errors.field === "description" ? (
+              <span>{errors.message}</span>
+            ) : (
+              <></>
+            )}
+          </div>  
+         
+          <button className="bg-lunargreen text-almwhite font-inter-semibold mt-6" type="submit">Register</button>
+        </div>
+ 
+        <div className="w-full md:w-1/3 h-64 md:h-auto">
+          <img src={PlantImg} className="object-cover h-full w-full filter grayscale" alt="Plant photo" />
+        </div>
+      </form>
+    </section>
   )
 }
+ 
 export default PlantsFormPage
