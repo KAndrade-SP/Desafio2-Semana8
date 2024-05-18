@@ -12,7 +12,7 @@ import {
  
 import { PlantsError } from "./types/PlantsError"
  
-import PlantImg from '../../assets/images/plant-form.png'
+import PlantImg from '../../assets/images/vaso.png'
  
 type PlantType = {
   id: number,
