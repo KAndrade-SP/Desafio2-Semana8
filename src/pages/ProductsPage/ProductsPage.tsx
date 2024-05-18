@@ -1,6 +1,5 @@
 import CactusImg from "../../assets/images/img_01.png";
 
-
 const ProductsPage = () => {
   return (
     <div className='px-8 py-14 md:px-12 md:py-16 lg:px-16 lg:py-16 bg-lightgray'>

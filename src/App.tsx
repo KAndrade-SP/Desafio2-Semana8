@@ -9,6 +9,8 @@ import PlantsFormPage from "./pages/PlantsFormPage/PlantsFormPage"
 import Error404 from "./pages/Error404/Error404"
 import Footer from "./components/Footer"
 import ProductsPage from "./pages/ProductsPage/ProductsPage"
+import ListaProdutos from "./pages/ProductsPage/ListaProdutos"
+import DetalheProduto from "./pages/ProductsPage/DetalheProduto"
 
 function App() {
 
@@ -41,7 +43,14 @@ function App() {
           <Route
             path="/about-us"
             element={ 
-              <AboutUsPage/>
+              //<AboutUsPage/>
+              <ListaProdutos />
+            }
+          />
+          <Route 
+            path="/product/:id"
+            element={
+              <DetalheProduto />
             }
           />
         </Routes>
