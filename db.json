@@ -5,7 +5,7 @@
       "plantName": "Echinocereus Cactus",
       "plantSubtitle": "A Majestic Addition to Your Plant Collection",
       "plantType": "cactus",
-      "price": "$139.99",
+      "price": "139.99",
       "isInSale": true,
       "discountPercentage": 20,
       "plantLabel": "indoor",
@@ -14,27 +14,27 @@
     },
     {
       "id": 2,
-      "plantName": "plant",
-      "plantSubtitle": "subtitle",
-      "plantType": "plant type",
+      "plantName": "Monstera deliciosa",
+      "plantSubtitle": "A Majestic Addition to Your Plant Collection",
+      "plantType": "liliopsida",
       "price": "10",
       "isInSale": false,
       "discountPercentage": 0,
-      "plantLabel": "outdoor",
-      "features": "Features here",
-      "description": "Description here"
+      "plantLabel": "indoor",
+      "features": "Gosta de luz, o local escolhido precisa ter claridade. Espaços com meia sombra e iluminação indireta são uma boa opção para ela. Tome cuidado com o sol forte.",
+      "description": "A costela-de-adão é uma planta da família das aráceas. Possui folhas grandes, cordiformes, penatífidas e perfuradas, com longos pecíolos, flores aromáticas, em espádice comestível, branco-creme, com espata verde, e bagas amarelo-claras."
     },
     {
       "id": 3,
-      "plantName": "PlantNametwo",
-      "plantSubtitle": "subtitletwo",
-      "plantType": "plant typetwo",
-      "price": "50",
+      "plantName": "Orchidaceae",
+      "plantSubtitle": "A Majestic Addition to Your Plant Collection",
+      "plantType": "magnoliophyta",
+      "price": "90",
       "isInSale": true,
-      "discountPercentage": 3,
+      "discountPercentage": 10,
       "plantLabel": "indoor",
-      "features": "Features planttwo here",
-      "description": "Description planttwo here"
+      "features": "Elas podem florir até três vezes por ano e suas flores duram até três meses. As cores dessa flor variam: branca, rosa, azul, roxa, e há também versões híbridas. As orquídeas brancas são as mais comuns. E a orquídea amarela é rara, sendo mais difícil de encontrar.",
+      "description": " Apresentam muitíssimas e variadas formas, cores e tamanhos e existem em todos os continentes, exceto na Antártida, predominando nas áreas tropicais."
     }
   ]
 }
