@@ -18,9 +18,9 @@ import Error404 from '../pages/Error404/Error404';
 const ProductDetail = () => {
     const {id} = useParams();
 
-    if (!id || isNaN(parseInt(id, 10))) {
+    /*if (!id || isNaN(parseInt(id, 10))) {
         <Error404/>; 
-    }
+    }*/
 
     const productId = parseInt(id, 10);
     const product = plants.find((product) => product.id === productId);
@@ -40,7 +40,7 @@ const ProductDetail = () => {
             <img src={product?.imgUrl} alt={product?.description} />
           </div>
           <div className='md:mx-auto flex flex-col justify-start  2xl:max-w-2xl '>
-            <h3 className=" text-lunargreen font-ebgaramond-bold text-3xl md:pb-3 md:text-4xl lg:pb-2 2xl:text-6.5xl">{product?.name}</h3>
+            <h3 className=" text-lunargreen font-ebgaramond-bold text-3xl md:pb-3 md:text-4xl lg:text-5xl lg:pb-2 2xl:text-6.5xl">{product?.name}</h3>
             <span className=" text-lg md:py-3 lg:pt-0 lg:pb-2 font-lato-bold 2xl:text-2xl  text-darkgray" >{product?.subtitle} </span>
             <div>
                 {product?.label.map((label, index) => (
@@ -48,7 +48,7 @@ const ProductDetail = () => {
                 ))}
             </div>
             <span className=' pt-3 lg:pt-2 font-lato-bold text-xl'>{product?.price}</span>
-            <button className='h-14 w-44 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5'><a href="">Check out</a></button>            
+            <button className='h-14 w-44 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado hover:text-black hover:font-raleway-bold'><a href="">Check out</a></button>            
             <h3 className='font-lato-bold text-xl mb-3'>Features</h3>
             <ul className='list-disc font-raleway-regular pl-4'>
                 {feature?.map((feature, index) => (
