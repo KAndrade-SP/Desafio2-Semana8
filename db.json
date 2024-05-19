@@ -35,6 +35,30 @@
       "plantLabel": "indoor",
       "features": "Features planttwo here",
       "description": "Description planttwo here"
+    },
+    {
+      "id": 4,
+      "plantName": "PlantTestValidation",
+      "plantSubtitle": "PlantTestValidation",
+      "plantType": "PlantTestValidation",
+      "price": "20",
+      "isInSale": true,
+      "discountPercentage": 20,
+      "plantLabel": "outdoor",
+      "features": "PlantTestValidation",
+      "description": "PlantTestValidation"
+    },
+    {
+      "id": 5,
+      "plantName": "PlantTestValidationTwo",
+      "plantSubtitle": "PlantTestValidationTwo",
+      "plantType": "PlantTestValidationTwo",
+      "price": "20",
+      "isInSale": true,
+      "discountPercentage": 20,
+      "plantLabel": "outdoor",
+      "features": "\n",
+      "description": "PlantTestValidationTwo"
     }
   ]
 }
