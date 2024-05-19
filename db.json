@@ -35,6 +35,18 @@
       "plantLabel": "indoor",
       "features": "Elas podem florir até três vezes por ano e suas flores duram até três meses. As cores dessa flor variam: branca, rosa, azul, roxa, e há também versões híbridas. As orquídeas brancas são as mais comuns. E a orquídea amarela é rara, sendo mais difícil de encontrar.",
       "description": " Apresentam muitíssimas e variadas formas, cores e tamanhos e existem em todos os continentes, exceto na Antártida, predominando nas áreas tropicais."
+    },
+    {
+      "id": 4,
+      "plantName": "Sansevieria trifasciata",
+      "plantSubtitle": "Sansevieria trifasciata",
+      "plantType": "Sansevieria trifasciata",
+      "price": "50",
+      "isInSale": true,
+      "discountPercentage": 5,
+      "plantLabel": "outdoor",
+      "features": "Afric original",
+      "description": "Linked by many to the mystic the sword of Saint George is a beautiful plant that is very popular"
     }
   ]
 }

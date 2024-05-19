@@ -96,7 +96,7 @@ const Navbar = () => {
               <li className='p-4'>Register</li>
             </Link>
                     
-            <Link to={'/error404'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/products'} className='flex pl-4 pt-0.5 items-center'>
               <PiShoppingCartSimple size={24}/>
               <li className='p-4'>Products</li>
             </Link>

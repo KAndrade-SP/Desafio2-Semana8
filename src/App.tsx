@@ -33,12 +33,14 @@ function App() {
             element={<PlantsFormPage/>}
           />
           <Route
-            path="/error404"
-            element={<Error404/>}
-          />
-          <Route
             path="/products"
             element={<ProductsPage/>}
+          />
+          <Route 
+            path="/product/:id"
+            element={
+              <DetalheProduto />
+            }
           />
           <Route
             path="/about-us"
@@ -47,11 +49,9 @@ function App() {
               <ListaProdutos />
             }
           />
-          <Route 
-            path="/product/:id"
-            element={
-              <DetalheProduto />
-            }
+          <Route
+            path="/*"
+            element={<Error404/>}
           />
         </Routes>
 
