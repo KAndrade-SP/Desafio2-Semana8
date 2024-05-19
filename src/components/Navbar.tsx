@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 import { PiList, PiX, PiHouse, PiNewspaper, PiInfo, PiShoppingCartSimple } from "react-icons/pi"
 
@@ -9,6 +9,7 @@ import { UserButton, useUser } from "@clerk/clerk-react"
 const Navbar = () => {
 
   const ref = useRef<HTMLDivElement>(null)
+  const location = useLocation()
   const [toggle, setToggle] = useState(false)
 
   const { isSignedIn, user, isLoaded } = useUser()
@@ -43,19 +44,19 @@ const Navbar = () => {
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
             <Link to={'/'}>
-              <li className="text-md text-avacado hover:text-lunargreen cursor-pointer">Home</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Home</li>
             </Link>
 
             <Link to={'/register'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Register</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/register' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Register</li>
             </Link>
 
             <Link to={'/products'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Products</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/products' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Products</li>
             </Link>
 
             <Link to={'/about-us'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">About us</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>About us</li>
             </Link>
           </ul>
         </div>
@@ -76,7 +77,7 @@ const Navbar = () => {
         </div>
 
         {/* DROPDOWN MENU */}
-        <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado px-4 py-1 md:hidden':'hidden'}>
+        <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-14 right-5 rounded-2xl bg-almwhite text-lunargreen hover:text-avacado px-4 py-1 md:hidden':'hidden'}>
           <ul>
             {isSignedIn 
             ? <div className="flex pl-4 pt-0.5 items-center">
@@ -87,22 +88,22 @@ const Navbar = () => {
 
             <Link to={'/'} className='flex pl-4 pt-0.5 items-center'>
               <PiHouse size={24}/>
-              <li className='p-4'>Home</li>
+              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Home</li>
             </Link>
                     
             <Link to={'/register'} className='flex pl-4 pt-0.5 items-center'>
               <PiNewspaper size={24}/>
-              <li className='p-4'>Register</li>
+              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/register' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Register</li>
             </Link>
                     
             <Link to={'/products'} className='flex pl-4 pt-0.5 items-center'>
               <PiShoppingCartSimple size={24}/>
-              <li className='p-4'>Products</li>
+              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/products' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Products</li>
             </Link>
                     
             <Link to={'/about-us'} className='flex pl-4 pt-0.5 items-center'>
               <PiInfo size={24}/>
-              <li className='p-4'>About Us</li>
+              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>About Us</li>
             </Link>  
                   
           </ul>
