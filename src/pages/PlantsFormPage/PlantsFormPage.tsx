@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import axios from 'axios';
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 
 import {
   validName,
@@ -11,8 +13,7 @@ import {
 } from "./regex/RegexValidation"
 
 import { PlantsError } from "./types/PlantsError"
-
-import { PlantsSucess } from './types/PlantsSucess';
+import { PlantsSucess } from './types/PlantsSucess'
 
 import PlantImg from '../../assets/images/plant-form.png'
 
@@ -44,7 +45,6 @@ const PlantsFormPage = () => {
   })
 
   const [errors, setErrors] = useState<PlantsError>({ message: "", field: "" })
-
   const [sucessMessage, setSucessMessage] = useState<PlantsSucess>({message: ""})
 
   const validate = () => {
@@ -189,6 +189,23 @@ const PlantsFormPage = () => {
     }
   }
 
+  useEffect(() => {
+
+    if (sucessMessage.message) {
+      toast.success(sucessMessage.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    } 
+
+  }, [sucessMessage])
+
   return (
     <section className="bg-lightgray">
       <div className="flex flex-row justify-center max-w-full 2xl:justify-between">
@@ -319,7 +336,7 @@ const PlantsFormPage = () => {
             <button className="bg-lunargreen text-almwhite font-inter-semibold mt-6 py-3.5 rounded-md hover:bg-avacado transition-all" type="submit">Register</button> 
             {sucessMessage && sucessMessage.message ? (
                 <span className="text-flaggreen text-lg font-inter-regular">{sucessMessage.message}</span>
-              ) : (<></>)}
+            ) : (<></>)}
           </div>
 
         </form>

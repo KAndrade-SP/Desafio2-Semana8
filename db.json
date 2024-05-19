@@ -47,6 +47,18 @@
       "plantLabel": "outdoor",
       "features": "Afric original",
       "description": "Linked by many to the mystic the sword of Saint George is a beautiful plant that is very popular"
+    },
+    {
+      "id": 5,
+      "plantName": "Peace Lily",
+      "plantSubtitle": "Spathiphyllum",
+      "plantType": "Indoor Plant",
+      "price": "85",
+      "isInSale": true,
+      "discountPercentage": 10,
+      "plantLabel": "indoor",
+      "features": "Low light tolerant Air purifier Low maintenance",
+      "description": "Peace Lily is a popular indoor plant known for its air purifying properties and beautiful white blooms It thrives in low light conditions and requires minimal care making it perfect for home or office environments"
     }
   ]
 }

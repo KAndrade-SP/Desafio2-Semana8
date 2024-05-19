@@ -11,11 +11,10 @@ const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null)
   const [toggle, setToggle] = useState(false)
 
-  const { isSignedIn, user, isLoaded } = useUser();
+  const { isSignedIn, user, isLoaded } = useUser()
 
   if (!isLoaded) {
-    // Handle loading state however you like
-    return null;
+    return null
   }
 
   const outsideClick = (e: MouseEvent) => {
