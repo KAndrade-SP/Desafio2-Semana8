@@ -12,6 +12,9 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage"
 import ListaProdutos from "./pages/ProductsPage/ListaProdutos"
 import DetalheProduto from "./pages/ProductsPage/DetalheProduto"
 
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
+
 function App() {
 
   return (
@@ -50,12 +53,12 @@ function App() {
             }
           />
           <Route
-            path="/*"
+            path="*"
             element={<Error404/>}
           />
         </Routes>
-
         <Footer/>
+        <ToastContainer />
       </SignedIn>
     </>
   )
