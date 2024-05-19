@@ -52,8 +52,8 @@ const ProductList = () => {
                     const promoPrice = plant.isInSale ? (plant.price * (1 - plant.discountPercentage / 100)).toFixed(2) : plant.price;
                     const image = images[index % images.length];
                     return (
-                    <div className=' flex flex-col md:items-center  mb-20'>
-                        <div key={plant.id} className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl h-'>
+                    <div key={plant.id} className=' flex flex-col md:items-center  mb-20'>
+                        <div className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl h-'>
                                               
                             <img src={image} alt={plant.plantName} className='md:max-h-72 w-full'/>
                             <div className='px-4'>
