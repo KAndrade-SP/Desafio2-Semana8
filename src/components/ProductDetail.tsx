@@ -1,23 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-/*import plants from '../data';*/
-import Error404 from '../pages/Error404/Error404';
 import axios from 'axios';
 import Cactus from '../assets/images/img_01.png';
 
-/*type Product = {
-    id: number;
-    name: string;
-    subtitle: string;
-    label: string[];
-    price: string;
-    isInSale: boolean;
-    discountPercentage: number;
-    features: string;
-    description: string;
-    imgUrl: string;
-}*/
 
 type PlantType = {
     id: number,
@@ -35,7 +21,6 @@ type PlantType = {
 const ProductDetail = () => {
     const {id} = useParams<{ id: string }>();
     const [plant, setPlant ] = useState<PlantType | null>(null);
-   /*const [loading, setLoading] = useState(true);*/
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -45,14 +30,11 @@ const ProductDetail = () => {
 
             axios.get(`http://localhost:3000/plants/${productId}`).then(response => {
                 setPlant(response.data);
-               // setLoading(false);
             }).catch(err => {
                 setError("Produto não encontrado.");
-              //  setLoading(false);
             });
         } else {
             setError("Parâmetro `id` inválido");
-            //setLoading(false);
         }
     }, [id]);
 
@@ -65,12 +47,11 @@ const ProductDetail = () => {
         return null;
     }
 
-    
-    /*const product = plants.find((product) => product.id === productId);
+    const handleCheckOut = () => {
+        navigate('/error404');
+    }
 
-    if (!product) {
-        <Error404/>
-    }*/
+    const promoPrice = plant.isInSale ? (plant.price * (1 - plant.discountPercentage / 100)).toFixed(2) : plant.price;
 
     // Dividir as frases das features pelo ponto
     const feature = plant.features.split('.').map(feature => feature.trim()).filter(feature => feature.length > 0);
@@ -89,8 +70,16 @@ const ProductDetail = () => {
                 <button className=' mr-4 lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl  w-20 h-10 text-flaggreen font-raleway-regular pointer-events-none'>{plant.plantLabel}</button>
                 <button className=' mr-4 lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl  w-auto h-10 px-2 text-flaggreen font-raleway-regular pointer-events-none'>{plant.plantType}</button>
             </div>
-            <span className=' pt-3 lg:pt-2 font-lato-bold text-xl'>${plant.price}</span>
-            <button className='flex-row overflow-hidden h-14 w-40 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado  hover:font-raleway-bold transition-all'><a href="">Check out</a></button>            
+            <div>
+                {plant.isInSale ? (
+                    <p className='pt-3'>
+                        <span className='lg:pt-2 font-lato-bold text-xl text-avacado line-through'>${plant.price}</span> <span className=' ml-6 lg:pt-2 font-lato-bold text-xl text-lunargreen'>${promoPrice}</span>
+                    </p>
+                ) : (
+                    <p className=' pt-3 lg:pt-2 font-lato-bold text-xl text-lunargreen'>${plant.price}</p>
+                )}              
+            </div>
+            <button onClick={handleCheckOut} className='flex-row overflow-hidden h-14 w-40 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado  hover:font-raleway-bold transition-all'><a href="">Check out</a></button>            
             <h3 className='font-lato-bold text-xl mb-3'>Features</h3>
             <ul className='list-disc font-raleway-regular pl-4'>
                 {feature.map((feature, index) => (

@@ -35,6 +35,18 @@
       "plantLabel": "indoor",
       "features": "Elas podem florir até três vezes por ano e suas flores duram até três meses. As cores dessa flor variam: branca, rosa, azul, roxa, e há também versões híbridas. As orquídeas brancas são as mais comuns. E a orquídea amarela é rara, sendo mais difícil de encontrar.",
       "description": " Apresentam muitíssimas e variadas formas, cores e tamanhos e existem em todos os continentes, exceto na Antártida, predominando nas áreas tropicais."
+    },
+    {
+      "id": 4,
+      "plantName": "Maranta Araruta",
+      "plantSubtitle": "A Majestic Addition to Your Plant Collection",
+      "plantType": "arundinacea",
+      "price": "119.50",
+      "isInSale": false,
+      "discountPercentage": 0,
+      "plantLabel": "outdoor",
+      "features": "Cresce melhor com temperaturas de 23°C a 29°C. É uma planta perene que cresce entre 0,3 m e 1,5m. Flores brancas florescem ao redor de 90 dias após plantadas. Os rizomas são de formato cilindrico e crescem de 20cm a 45cm de comprimento.",
+      "description": "Ela é uma planta grande, perene, encontrando originalmente em florestas tropicais das Americas, mas cultivada em regiões tropicais pelo mundo todo. A planta raras vezes produz sementes e a reprodução tipicamente é feita ao plantar parte de um rizoma que já está brotando."
     }
   ]
 }
