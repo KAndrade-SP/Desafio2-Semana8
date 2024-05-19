@@ -15,7 +15,7 @@ const ProductsPage = () => {
               <button className=' lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl w-20 h-10 text-flaggreen font-raleway-regular pointer-events-none'>cactus</button>          
             </div>
             <span className=' pt-3 lg:pt-2 font-lato-bold text-xl'>$139.99</span>
-            <button className='h-14 w-44 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5'><a href="">Check out</a></button>            
+            <button className='h-14 w-44 bg-lunargreen hover:bg-avacado hover:font-raleway-bold  text-almwhite font-raleway-regular my-6 lg:my-5'><a href="">Check out</a></button>            
             <h3 className='font-lato-bold text-xl mb-3'>Features</h3>
             <ul className='list-disc font-raleway-regular pl-4'>
               <li>Species: Echinocereus spp.</li>

@@ -56,8 +56,8 @@ const ProductList = () => {
                 {plants.map((plant, index) => {
                     const image = images[index % images.length];
                     return (
-                    <div className=' flex flex-col md:items-center  mb-20'>
-                        <div key={plant.id} className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl h-'>
+                    <div key={plant.id} className=' flex flex-col md:items-center  mb-20'>
+                        <div className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl h-'>
                             <Link to={`/product/${plant.id}`}>                   
                                 <img src={image} alt={plant.plantName} className='md:max-h-72 w-full'/>
                                 <div className='px-4'>
