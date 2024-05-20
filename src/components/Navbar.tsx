@@ -38,38 +38,31 @@ const Navbar = () => {
       <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
         <Link to={'/'}>
-          <img src={Logo} className="cursor-pointer hover:opacity-75" alt="" />
+          <img src={Logo} className="cursor-pointer hover:scale-110" alt="" />
         </Link>
 
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
             <Link to={'/'}>
-              <li className={`text-md cursor-pointer ${location.pathname === '/' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Home</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/' ? 'text-avacado transition ease-in-out hover:scale-110 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-110 hover:font-bold hover:text-avacado'}`}>Home</li>
             </Link>
 
             <Link to={'/register'}>
-              <li className={`text-md cursor-pointer ${location.pathname === '/register' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Register</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/register' ? 'text-avacado transition ease-in-out hover:scale-110 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-110 hover:font-bold hover:text-avacado'}`}>Register</li>
             </Link>
 
             <Link to={'/products'}>
-              <li className={`text-md cursor-pointer ${location.pathname === '/products' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Products</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/products' ? 'text-avacado transition ease-in-out hover:scale-110 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-110 hover:font-bold hover:text-avacado'}`}>Products</li>
             </Link>
 
             <Link to={'/about-us'}>
-              <li className={`text-md cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>About us</li>
+              <li className={`text-md cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado transition ease-in-out hover:scale-110 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-110 hover:font-bold hover:text-avacado'}`}>About us</li>
             </Link>
           </ul>
         </div>
 
-        <div className="hidden md:flex">
-          <div>
-            <a
-              onClick={handleClick}
-              className="flex justify-end gap-4 items-center cursor-pointer hover:opacity-75"
-            >
-              <UserButton />
-            </a>
-          </div>
+        <div className="hidden md:flex hover:scale-110">
+          <UserButton />
         </div>
 
         <div className='md:hidden' onClick={handleClick}>
@@ -77,33 +70,33 @@ const Navbar = () => {
         </div>
 
         {/* DROPDOWN MENU */}
-        <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-14 right-5 rounded-2xl bg-almwhite text-lunargreen hover:text-avacado px-4 py-1 md:hidden':'hidden'}>
+        <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-14 right-5 rounded-2xl bg-almwhite px-4 py-1 md:hidden':'hidden'}>
           <ul>
             {isSignedIn 
-            ? <div className="flex pl-4 pt-0.5 items-center">
+            ? <div className="flex pl-4 pt-0.5 items-center cursor-pointer text-lunargreen transition ease-in-out hover:scale-105 hover:font-bold hover:text-avacado">
                 <UserButton />
                 <p className="px-3 py-4">{user.firstName}</p>
               </div> 
             : <></>}
 
-            <Link to={'/'} className='flex pl-4 pt-0.5 items-center'>
-              <PiHouse size={24}/>
-              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Home</li>
+            <Link to={'/'} className={`flex flex-row gap-4 pt-0.5 items-center text-md p-4 cursor-pointer ${location.pathname === '/' ? 'text-avacado transition ease-in-out hover:scale-105 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-105 hover:font-bold hover:text-avacado'}`}>
+              <PiHouse size={24} />
+              <li>Home</li>
             </Link>
                     
-            <Link to={'/register'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/register'} className={`flex flex-row gap-4 pt-0.5 items-center text-md p-4 cursor-pointer ${location.pathname === '/register' ? 'text-avacado transition ease-in-out hover:scale-105 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-105 hover:font-bold hover:text-avacado'}`}>
               <PiNewspaper size={24}/>
-              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/register' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Register</li>
+              <li>Register</li>
             </Link>
                     
-            <Link to={'/products'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/products'} className={`flex flex-row gap-4 pt-0.5 items-center text-md p-4 cursor-pointer ${location.pathname === '/products' ? 'text-avacado transition ease-in-out hover:scale-105 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-105 hover:font-bold hover:text-avacado'}`}>
               <PiShoppingCartSimple size={24}/>
-              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/products' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>Products</li>
+              <li>Products</li>
             </Link>
                     
-            <Link to={'/about-us'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/about-us'} className={`flex flex-row gap-4 pt-0.5 items-center text-md p-4 cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado transition ease-in-out hover:scale-105 hover:font-bold hover:text-lunargreen' : 'text-lunargreen transition ease-in-out hover:scale-105 hover:font-bold hover:text-avacado'}`}>
               <PiInfo size={24}/>
-              <li className={`text-md p-4 cursor-pointer ${location.pathname === '/about-us' ? 'text-avacado hover:text-lunargreen' : 'text-lunargreen hover:text-avacado'}`}>About Us</li>
+              <li>About Us</li>
             </Link>  
                   
           </ul>
