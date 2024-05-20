@@ -8,7 +8,6 @@ import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
 import PlantsFormPage from "./pages/PlantsFormPage/PlantsFormPage"
 import Error404 from "./pages/Error404/Error404"
 import Footer from "./components/Footer"
-import ProductsPage from "./pages/ProductsPage/ProductsPage"
 import ListaProdutos from "./pages/ProductsPage/ListaProdutos"
 import DetalheProduto from "./pages/ProductsPage/DetalheProduto"
 
@@ -41,7 +40,7 @@ function App() {
           />
           <Route
             path="/products"
-            element={<ProductsPage/>}
+            element={<ListaProdutos/>}
           />
           <Route 
             path="/product/:id"
@@ -52,8 +51,7 @@ function App() {
           <Route
             path="/about-us"
             element={ 
-              //<AboutUsPage/>
-              <ListaProdutos />
+              <AboutUsPage/>
             }
           />
           <Route
