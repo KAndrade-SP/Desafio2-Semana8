@@ -53,7 +53,7 @@ const ProductList = () => {
                     const image = images[index % images.length];
                     return (
                     <div key={plant.id} className=' flex flex-col md:items-center  mb-20'>
-                        <div className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl h-'>
+                        <div className='flex flex-col justify-start md:w-80 lg:w-80 shadow-xl hover:shadow-2xl hover:scale-105 transition-all'>
                                               
                             <img src={image} alt={plant.plantName} className='md:max-h-72 w-full'/>
                             <div className='px-4'>
@@ -73,7 +73,7 @@ const ProductList = () => {
                                     <button className=' mr-4 bg-whitegreen border-lightgreen border-2 rounded-3xl w-auto h-10 px-2 text-flaggreen font-raleway-regular pointer-events-none'>{plant.plantType}</button>
                                 </div>
                                 <Link to={`/product/${plant.id}`}> 
-                                    <button className='h-14 w-40  my-4 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all'>See more</button>
+                                    <button className='h-14 w-40  my-4 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado hover:font-raleway-bold transition-all hover:scale-105'>See more</button>
                                 </Link>
                             </div>
 

@@ -79,7 +79,7 @@ const ProductDetail = () => {
                     <p className=' pt-3 lg:pt-2 font-lato-bold text-xl text-lunargreen'>${plant.price}</p>
                 )}              
             </div>
-            <button onClick={handleCheckOut} className='flex-row overflow-hidden h-14 w-40 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado  hover:font-raleway-bold transition-all'><a href="">Check out</a></button>            
+            <button onClick={handleCheckOut} className='flex-row overflow-hidden h-14 w-40 bg-lunargreen  text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105'><a href="">Check out</a></button>            
             <h3 className='font-lato-bold text-xl mb-3'>Features</h3>
             <ul className='list-disc font-raleway-regular pl-4'>
                 {feature.map((feature, index) => (

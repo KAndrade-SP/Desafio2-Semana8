@@ -23,31 +23,31 @@ const Footer = () => {
           <div className="flex flex-row gap-14">
 
             <div className="flex flex-col gap-4">
-              <h3 className="text-white cursor-pointer hover:text-avacado text-lg font-raleway-bold">Links</h3>
+              <h3 className="text-white cursor-pointer hover:text-avacado transition delay-100 hover:scale-125 hover:font-bold text-lg font-raleway-bold">Links</h3>
               <ul className="text-white text-sm leading-9">
                 <Link to={'/about-us'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">About us</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">About us</li>
                 </Link>
                 <Link to={'/error404'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">Products</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">Products</li>
                 </Link>
                 <Link to={'/error404'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">Blogs</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">Blogs</li>
                 </Link>   
               </ul>
             </div>
 
             <div className="flex flex-col gap-4">
-              <h3 className="text-white cursor-pointer hover:text-avacado text-lg font-raleway-bold">Community</h3>
+              <h3 className="text-white cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado text-lg font-raleway-bold">Community</h3>
               <ul className="text-white text-sm leading-9">
                 <Link to={'/about-us'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">About us</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">About us</li>
                 </Link>
                 <Link to={'/error404'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">Products</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">Products</li>
                 </Link>
                 <Link to={'/error404'}>
-                  <li className="font-raleway-regular cursor-pointer hover:text-avacado">Blogs</li>
+                  <li className="font-raleway-regular cursor-pointer transition delay-100 hover:scale-125 hover:font-bold hover:text-avacado">Blogs</li>
                 </Link> 
               </ul>
             </div>

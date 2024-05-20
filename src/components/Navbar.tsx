@@ -38,25 +38,25 @@ const Navbar = () => {
       <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
         <Link to={'/'}>
-          <img src={Logo} className="cursor-pointer hover:opacity-75" alt="" />
+          <img src={Logo} className="cursor-pointer hover:scale-125" alt="" />
         </Link>
 
         <div className="hidden md:flex items-center">
           <ul className="flex gap-7">
             <Link to={'/'}>
-              <li className="text-md text-avacado hover:text-lunargreen cursor-pointer">Home</li>
+              <li className="text-md text-avacado transition delay-100 hover:scale-125 cursor-pointer hover:font-bold">Home</li>
             </Link>
 
             <Link to={'/register'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Register</li>
+              <li className="text-md text-lunargreen transition delay-100 hover:scale-125 hover:font-bold cursor-pointer">Register</li>
             </Link>
 
             <Link to={'/products'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">Products</li>
+              <li className="text-md text-lunargreen transition delay-100 hover:scale-125 hover:font-bold cursor-pointer">Products</li>
             </Link>
 
             <Link to={'/about-us'}>
-              <li className="text-md text-lunargreen hover:text-avacado cursor-pointer">About us</li>
+              <li className="text-md text-lunargreen transition delay-100 hover:scale-125 hover:font-bold cursor-pointer">About us</li>
             </Link>
           </ul>
         </div>
@@ -80,30 +80,30 @@ const Navbar = () => {
         <div onClick={handleClick} className={toggle?'absolute z-20 mt-2 top-20 right-5 rounded-2xl bg-lightgray text-lunargreen hover:text-avacado px-4 py-1 md:hidden':'hidden'}>
           <ul>
             {isSignedIn 
-            ? <div className="flex pl-4 pt-0.5 items-center">
+            ? <div className="flex pl-4 pt-0.5 items-center hover:font-bold">
                 <UserButton />
                 <p className="px-3 py-4">{user.firstName}</p>
               </div> 
             : <></>}
 
-            <Link to={'/'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/'} className='flex pl-4 pt-0.5 items-center transition delay-100 hover:scale-125 hover:font-bold'>
               <PiHouse size={24}/>
-              <li className='p-4'>Home</li>
+              <li className='p-4 '>Home</li>
             </Link>
                     
-            <Link to={'/register'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/register'} className='flex pl-4 pt-0.5 items-center transition delay-100 hover:scale-110 hover:font-bold'>
               <PiNewspaper size={24}/>
-              <li className='p-4'>Register</li>
+              <li className='p-4 '>Register</li>
             </Link>
                     
-            <Link to={'/error404'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/error404'} className='flex pl-4 pt-0.5 items-center transition delay-100 hover:scale-110 hover:font-bold'>
               <PiShoppingCartSimple size={24}/>
-              <li className='p-4'>Products</li>
+              <li className='p-4 '>Products</li>
             </Link>
                     
-            <Link to={'/about-us'} className='flex pl-4 pt-0.5 items-center'>
+            <Link to={'/about-us'} className='flex pl-4 pt-0.5 items-center transition delay-100 hover:scale-110 hover:font-bold'>
               <PiInfo size={24}/>
-              <li className='p-4'>About Us</li>
+              <li className='p-4 '>About Us</li>
             </Link>  
                   
           </ul>
