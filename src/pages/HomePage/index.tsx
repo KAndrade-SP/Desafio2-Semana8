@@ -10,19 +10,23 @@ import Plant2 from "./assets/plant2.png";
 import Carousel1 from "./components/Carousel1";
 import Carousel2 from "./components/Carousel2";
 import { EmblaOptionsType } from "embla-carousel";
-import { Cta } from "./components/CTA"
+import { Cta } from "./components/CTA";
+import { Link } from "react-router-dom";
 
 const OPTIONS: EmblaOptionsType = { loop: false };
-const SLIDE_COUNT = 10;
-const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
+
 
 export function HomePage() {
   return (
     <div>
       <main className="w-full min-h-svh text-medgray">
         <section className="md:px-28 px-8 py-9 flex relative min-h-svh bg-graybackground">
-          <Cta/>
-          <img className="hidden xl:flex absolute right-0 bottom-0" src={Plant1} alt="Plants on a table" />
+          <Cta />
+          <img
+            className="hidden xl:flex absolute right-0 bottom-0"
+            src={Plant1}
+            alt="Plants on a table"
+          />
           <img
             className="hidden md:flex absolute left-0 bottom-0 translate-y-[38%]"
             src={Plant2}
@@ -94,13 +98,25 @@ export function HomePage() {
             </div>
             <div className="flex flex-row items-start justify-center gap-28">
               <div className="hidden 2xl:flex w-full">
-                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img1} alt="Plants in a room with a person portrait on the wall" />
+                <img
+                  className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105"
+                  src={Img1}
+                  alt="Plants in a room with a person portrait on the wall"
+                />
               </div>
               <div className="hidden 2xl:flex w-full">
-                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img2} alt="Plants in a garden" />
+                <img
+                  className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105"
+                  src={Img2}
+                  alt="Plants in a garden"
+                />
               </div>
               <div className="flex flex-col w-full gap-8 items-start justify-center content-start font-raleway-regular">
-                <img className="w-full hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img3} alt="Bonsai image" />
+                <img
+                  className="w-full hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105"
+                  src={Img3}
+                  alt="Bonsai image"
+                />
                 <p>
                   Our website offers a wide array of stunning plants, ranging
                   from vibrant flowers to lush indoor foliage, allowing you to
@@ -116,9 +132,11 @@ export function HomePage() {
                   the way. Get ready to explore our virtual garden and discover
                   the joys of gardening with us!
                 </p>
-                <button className="h-14 w-48 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
-                  See more photos
-                </button>
+                <Link to={"/error404"}>
+                  <button className="h-14 w-48 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
+                    See more photos
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

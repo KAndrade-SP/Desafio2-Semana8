@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export function Cta(){
     return(
         <div className="flex relative flex-row items-center justify-between gap-28 z-10">
@@ -12,14 +14,16 @@ export function Cta(){
               </h1>
               <p className="text-base font-raleway-regular">
                 We are your one-stop destination for all things green and
-                growing. Our website <br />
+                growing. Our website <br />s
                 offers a wide array of stunning plants, ranging from vibrant
                 flowers to lush indoor <br />
                 foliage, allowing you to create your very own green oasis.
               </p>
-              <button className="h-14 w-40 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
-                Shop Now
-              </button>
+              <Link to={'/error404'}>
+                <button className="h-14 w-40 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
+                  Shop Now
+                </button>
+              </Link>
             </div>
           </div>
     )
