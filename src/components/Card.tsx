@@ -37,7 +37,7 @@ export function Card(props: PropType) {
                 </span>
               </p>
             ) : (
-              <p className="pt-3 font-lato-regular text-xl my-2 text-lunargreen">
+              <p className="font-lato-regular text-xl my-2 text-lunargreen">
                 ${plant.price}
               </p>
             )}
