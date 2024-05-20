@@ -9,7 +9,8 @@ import {
   validSubtitle,
   validFeatures,
   validDescription,
-  validType
+  validType,
+  validPrice
 } from "./regex/RegexValidation"
 
 import { PlantsError } from "./types/PlantsError"
@@ -52,8 +53,10 @@ const PlantsFormPage = () => {
     if (!plantData.plantName || !validName.test(plantData.plantName) || plantData.plantName === "") {
 
       setErrors({
-        message: `Plant name invalid: ${
-          plantData.plantName ? plantData.plantName + "." : "this field is required."
+        message: `Name invalid: ${
+          plantData.plantName 
+          ? "(Ex. Cactus)" 
+          : "this field is required."
         }`,
         field: "plantName",
       })
@@ -62,9 +65,9 @@ const PlantsFormPage = () => {
     } else if (!plantData.plantSubtitle || !validSubtitle.test(plantData.plantSubtitle) || plantData.plantSubtitle === "") {
       
       setErrors({
-        message: `Plant subtitle invalid: ${
+        message: `Subtitle invalid ${
           plantData.plantSubtitle
-            ? plantData.plantSubtitle + "."
+            ? "(Ex. A beautiful plant)"
             : "this field is required."
         }`,
         field: "plantSubtitle",
@@ -74,28 +77,34 @@ const PlantsFormPage = () => {
     } else if (!plantData.plantType || !validType.test(plantData.plantType) || plantData.plantType === "") {
 
       setErrors({
-        message: `Plant type invalid: ${
-          plantData.plantType ? plantData.plantType + "." : "this field is required."
+        message: `Type invalid: ${
+          plantData.plantType 
+          ? "(Ex. Cactus)" 
+          : "this field is required."
         }`,
         field: "plantType",
       })
       return false
 
-    } else if (plantData.price <= 0 || isNaN(plantData.price)) {
+    } else if (plantData.price <= 0 || isNaN(plantData.price) || !validPrice.test(plantData.price.toString())) {
       
       setErrors({
-        message: `Plant price invalid: ${
-          plantData.price ? plantData.price + "." : "this field is required."
+        message: `Price invalid: ${
+          plantData.price 
+          ? "(Ex. 139.99, 1700, 750.50)" 
+          : "this field is required."
         }`,
         field: "price",
       })
       return false
 
-    } else if (plantData.discountPercentage <= 0 || plantData.discountPercentage > 100) { 
+    } else if (plantData.discountPercentage < 0 || plantData.discountPercentage > 100) { 
 
       setErrors({
-        message: `Plant discount invalid: ${
-          plantData.discountPercentage ? plantData.discountPercentage + "." : "this field is required."
+        message: `Discount invalid: ${
+          plantData.discountPercentage 
+          ? "(Ex. 10)" 
+          : "this field is required."
         }`,
         field: "discountPercentage",
       })
@@ -105,7 +114,9 @@ const PlantsFormPage = () => {
 
       setErrors({
         message: `Plant label invalid: ${
-          plantData.plantLabel ? plantData.plantLabel + "." : "this field is required."
+          plantData.plantLabel 
+          ? "" 
+          : "this field is required."
         }`,
         field: "plantLabel",
       })
@@ -115,8 +126,10 @@ const PlantsFormPage = () => {
     } else if (!plantData.features || !validFeatures.test(plantData.features) || plantData.features === "") {
 
       setErrors({
-        message: `Plant features invalid: ${
-          plantData.features ? plantData.features + "." : "this field is required."
+        message: `Features invalid: ${
+          plantData.features 
+          ? "(Ex. Species: echinocereus.)" 
+          : "this field is required."
         }`,
         field: "features",
       })
@@ -125,8 +138,10 @@ const PlantsFormPage = () => {
     } else if (!plantData.description || !validDescription.test(plantData.description) || plantData.description === "") {
 
       setErrors({
-        message: `Plant description invalid: ${
-          plantData.description ? plantData.description + "." : "this field is required."
+        message: `Description invalid: ${
+          plantData.description 
+          ? "(Ex. Ladyfinger cactus)" 
+          : "this field is required."
         }`,
         field: "description",
       })
@@ -218,12 +233,12 @@ const PlantsFormPage = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-almblack font-inter-semibold">
+              <label className="text-almblack font-inter-semibold text-lg">
                 Plant name
               </label>
               <input type="text" name="plantName" placeholder='Echinocereus Cactus' className="bg-lightgray py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.plantName} onChange={handleChange} />
               {errors && errors.field === "plantName" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -235,7 +250,7 @@ const PlantsFormPage = () => {
               </label>
               <input type="text" name="plantSubtitle" placeholder='A majestic addition to your plant collection' className="bg-lightgray py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.plantSubtitle} onChange={handleChange} />
               {errors && errors.field === "plantSubtitle" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -247,7 +262,7 @@ const PlantsFormPage = () => {
               </label>
               <input type="text" name="plantType" placeholder='Cactus' className="bg-lightgray py-2 px-2 text-lg rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.plantType} onChange={handleChange} />
               {errors && errors.field === "plantType" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -260,7 +275,7 @@ const PlantsFormPage = () => {
                 </label>
                 <input type="number" name="price" placeholder='$139.99' className="bg-lightgray py-2 px-2 text-lg rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.price || ''} onChange={handleChange} />
                 {errors && errors.field === "price" ? (
-                  <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                  <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
                 ) : (
                   <></>
                 )}
@@ -270,9 +285,9 @@ const PlantsFormPage = () => {
                 <label className="text-almblack font-inter-semibold text-lg">
                   Discount percentage
                 </label>
-                <input type="number" name="discountPercentage" className="bg-lightgray py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" placeholder="20" value={plantData.discountPercentage || 0} onChange={handleChange} />
+                <input type="number" name="discountPercentage" className="bg-lightgray py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" placeholder="20" value={plantData.discountPercentage} onChange={handleChange} />
                 {errors && errors.field === "discountPercentage" ? (
-                  <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                  <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
                 ) : (
                   <></>
                 )}
@@ -292,7 +307,7 @@ const PlantsFormPage = () => {
                   checked={plantData.plantLabel === 'indoor'} 
                   onChange={handleChange} 
                 />
-                <span className="text-almblack text text-base font-inter-medium">Indoor</span>
+                <span className="text-almblack text text-sm font-inter-medium">Indoor</span>
                 <input 
                   type="radio" 
                   name="plantLabel" 
@@ -300,10 +315,10 @@ const PlantsFormPage = () => {
                   checked={plantData.plantLabel === 'outdoor'} 
                   onChange={handleChange} 
                 />
-                <span className="text-almblack text text-base font-inter-medium">Outdoor</span>
+                <span className="text-almblack text text-sm font-inter-medium">Outdoor</span>
               </div>
               {errors && errors.field === "plantLabel" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -315,7 +330,7 @@ const PlantsFormPage = () => {
               </label>
               <textarea name="features" placeholder='Species: Echinocereus...' className="bg-lightgray h-32 py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.features} onChange={handleChange} />
               {errors && errors.field === "features" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -327,7 +342,7 @@ const PlantsFormPage = () => {
               </label>
               <textarea name="description" placeholder='Ladyfinger cactus...' className="bg-lightgray h-32 py-2 px-2 rounded-md border-2 border-darkgray border-opacity-60 font-inter-medium" value={plantData.description} onChange={handleChange} />
               {errors && errors.field === "description" ? (
-                <span className="text-red-600 text-base font-inter-regular">{errors.message}</span>
+                <span className="text-red-600 text-sm font-inter-regular">{errors.message}</span>
               ) : (
                 <></>
               )}
@@ -335,7 +350,7 @@ const PlantsFormPage = () => {
             
             <button className="bg-lunargreen text-almwhite font-inter-semibold mt-6 py-3.5 rounded-md hover:bg-avacado transition-all" type="submit">Register</button> 
             {sucessMessage && sucessMessage.message ? (
-                <span className="text-flaggreen text-lg font-inter-regular">{sucessMessage.message}</span>
+                <span className="text-flaggreen text-md font-inter-regular">{sucessMessage.message}</span>
             ) : (<></>)}
           </div>
 
