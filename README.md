@@ -4,6 +4,8 @@
 
 ![Inicial plantpeace](https://github.com/KAndrade-SP/Desafio2-Semana8/assets/69699073/c250dbf4-97f8-4a86-93ad-c72a1ce32df9)
 
+- O Trello do projeto pode ser acessado por [aqui](https://trello.com/b/BCTFpsgY/desafio-2-the-promised-reactland)!
+
 ## Como utilizar ❔
 *Passo a passo para execução do projeto*
 
