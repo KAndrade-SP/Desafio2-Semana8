@@ -19,7 +19,7 @@ export function Cta(){
                 flowers to lush indoor <br />
                 foliage, allowing you to create your very own green oasis.
               </p>
-              <Link to={'/error404'}>
+              <Link to={'*'}>
                 <button className="h-14 w-40 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
                   Shop Now
                 </button>
