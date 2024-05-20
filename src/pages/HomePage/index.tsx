@@ -55,7 +55,7 @@ export function HomePage() {
               </p>
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center lg:gap-28 gap-8 font-raleway-regular pb-20 text-center">
-              <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
                 <WaterdropIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Watering
@@ -67,7 +67,7 @@ export function HomePage() {
                   dehydration.
                 </p>
               </div>
-              <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
                 <SunIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Sunlight
@@ -79,7 +79,7 @@ export function HomePage() {
                   light for their specific needs
                 </p>
               </div>
-              <div className="flex flex-col gap-6 items-center justify-center">
+              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
                 <BoxIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Nutrients and Fertilizing
@@ -94,13 +94,13 @@ export function HomePage() {
             </div>
             <div className="flex flex-row items-start justify-center gap-28">
               <div className="hidden 2xl:flex w-full">
-                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img1} alt="Plants in a room with a person portrait on the wall" />
+                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img1} alt="Plants in a room with a person portrait on the wall" />
               </div>
               <div className="hidden 2xl:flex w-full">
-                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img2} alt="Plants in a garden" />
+                <img className="hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img2} alt="Plants in a garden" />
               </div>
               <div className="flex flex-col w-full gap-8 items-start justify-center content-start font-raleway-regular">
-                <img className="w-full hover:shadow-lg dark:hover:shadow-black/30 transition-all" src={Img3} alt="Bonsai image" />
+                <img className="w-full hover:shadow-lg dark:hover:shadow-black/30 transition-all delay:50 hover:scale-105" src={Img3} alt="Bonsai image" />
                 <p>
                   Our website offers a wide array of stunning plants, ranging
                   from vibrant flowers to lush indoor foliage, allowing you to
@@ -116,7 +116,7 @@ export function HomePage() {
                   the way. Get ready to explore our virtual garden and discover
                   the joys of gardening with us!
                 </p>
-                <button className="h-14 w-48 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all">
+                <button className="h-14 w-48 font-raleway-regular bg-lunargreen flex-row overflow-hidden text-almwhite text-base hover:bg-avacado  hover:font-raleway-bold transition-all hover:scale-105">
                   See more photos
                 </button>
               </div>
@@ -124,23 +124,23 @@ export function HomePage() {
           </div>
         </section>
         <section className="flex flex-col items-center justify-center gap-24 py-12 bg-grayishgreen w-full ">
-          <div className="gap-48 w-full flex flex-col justify-center items-center">
+          <div className="gap-28 w-full flex flex-col justify-center items-center">
             <h2 className="text-6xl font-ebgaramond-bold text-lunargreen p-8">
               This Weeks Most Popular{" "}
               <span className="text-avacado">And Best Selling</span>
             </h2>
 
             <div className="w-full">
-              <Carousel1 slides={SLIDES} options={OPTIONS} />
+              <Carousel1 options={OPTIONS} />
             </div>
           </div>
-          <div className="gap-48 w-full flex flex-col justify-center items-center">
+          <div className="gap-28 w-full flex flex-col justify-center items-center">
             <h2 className="text-6xl font-ebgaramond-bold text-avacado p-8">
               Plants In <span className="text-lunargreen">Sale</span>
             </h2>
 
             <div className="w-full">
-              <Carousel2 slides={SLIDES} options={OPTIONS} />
+              <Carousel2 options={OPTIONS} />
             </div>
           </div>
         </section>

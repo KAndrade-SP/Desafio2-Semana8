@@ -19,6 +19,7 @@ export default {
         almblack: '#1E1E24',
         grayishgreen: '#F0F1EE',
         graybackground:'#F0F0F0',
+        almgray:'#AFB2AA'
       },
       fontFamily: {
         ebgaramond: ['EBGaramond-regular', 'serif'],

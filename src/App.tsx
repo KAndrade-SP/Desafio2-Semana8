@@ -35,7 +35,7 @@ function App() {
             element={<Error404/>}
           />
           <Route
-            path="/products"
+            path="/product/:id"
             element={<ProductsPage/>}
           />
           <Route
@@ -43,10 +43,6 @@ function App() {
             element={ 
               <AboutUsPage/>
             }
-          />
-          <Route 
-            path="/products"
-            element={<ProductsPage/>}
           />
         </Routes>
 
