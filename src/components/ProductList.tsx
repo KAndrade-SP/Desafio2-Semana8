@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Error404 from '../pages/Error404/Error404';
 import { useNavigate } from 'react-router-dom';
 import img01 from '../assets/images/img_01.png';
 import img02 from '../assets/images/img_02.png';
@@ -40,7 +39,7 @@ const ProductList = () => {
     }, []);
 
     if (error) {
-        navigate('/error404');
+        navigate('*');
         return null;
     }
 

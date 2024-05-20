@@ -17,6 +17,8 @@ export default {
         lightgreen: '#83E281',
         whitegreen: '#F6FFF6',
         almblack: '#1E1E24',
+        grayishgreen: '#F0F1EE',
+        graybackground:'#F0F0F0',
       },
       fontFamily: {
         ebgaramond: ['EBGaramond-regular', 'serif'],
@@ -32,6 +34,10 @@ export default {
       },
       fontSize: {
         '6.5xl': '4rem',
+      },
+
+      screens: {
+        '3xl': '1800px',
         '4.5xl': '2.625rem',
         '4.7xl': '2.75rem',
         'xsm': '0.9375rem',

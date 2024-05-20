@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import { SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react"
 
 import Navbar from './components/Navbar'
-import HomePage from "./pages/HomePage/HomePage"
+import { HomePage } from "./pages/HomePage"
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage"
 import PlantsFormPage from "./pages/PlantsFormPage/PlantsFormPage"
 import Error404 from "./pages/Error404/Error404"

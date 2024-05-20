@@ -34,7 +34,7 @@ const Navbar = () => {
   document.addEventListener("mousedown", outsideClick)
 
   return (
-    <header ref={ref} className="h-[80px] font-medium font-raleway-regular bg-lightgray">
+    <header ref={ref} className="h-[80px] relative z-50 font-medium font-raleway-regular bg-lightgray">
       <div className="max-w-[1280px] mx-auto px-5 h-full flex justify-between items-center">
         
         <Link to={'/'}>
