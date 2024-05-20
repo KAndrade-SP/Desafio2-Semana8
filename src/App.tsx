@@ -20,7 +20,11 @@ function App() {
   return (
     <>
       <SignedOut>
-        <SignInButton />
+        <SignInButton>
+          <div className="flex justify-center items-center">
+            <button className="h-14 w-40 bg-lunargreen text-almwhite font-inter-semibold my-6 lg:my-5 hover:bg-avacado transition-all">Sign in with clerk</button>
+          </div>
+        </SignInButton>
       </SignedOut>
 
       <SignedIn>

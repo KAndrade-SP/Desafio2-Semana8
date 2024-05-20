@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 /*import plants from '../data';*/
-import Error404 from '../pages/Error404/Error404';
-import axios from 'axios';
-import Cactus from '../assets/images/img_01.png';
+import axios from 'axios'
+import Cactus from '../assets/images/img_01.png'
 
 /*type Product = {
     id: number;
@@ -57,8 +56,8 @@ const ProductDetail = () => {
     }, [id]);
 
     if (error) {
-        navigate('/error404');
-        return null;
+        navigate('*')
+        return null
     }
 
     if (!plant) {
