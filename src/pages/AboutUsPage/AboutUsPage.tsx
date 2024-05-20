@@ -110,9 +110,9 @@ const AboutUsPage = () => {
         <div className="max-w-sm rounded overflow-hidden shadow-lg mx-4">
           <img className="object-cover h-96 w-96" src="/src/assets/images/yan.jpeg" />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">Yan </div>
+            <div className="font-bold text-xl mb-2">Yan Augusto</div>
             <p className="text-gray-700 text-base">
-            He enjoys staying up-to-date with new technologies to maintain a strong understanding of current market demands for professionals. He consistently seeks to apply the knowledge he has acquired over time, continuously striving to evolve and become more skilled in his field.
+            A Systems Analysis and Development student living in Jales, São Paulo. He is a scholarship participant at Compass UOL and is starting his career in front-end development while also exploring back-end and database areas in college. His interest in technology began in 2021 at Fatec Jales and has been expanding ever since.
             </p>
             <div className="mt-2 pt-2 flex flex-row">
                 <div>
