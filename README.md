@@ -1,4 +1,4 @@
-# Desafio 2 - Semana 8 (plantPeace) :potted_plant:
+# Desafio 2 - Semana 8 (plantPeace)
 
 *Projeto da trilha de aprendizagem do programa de estágio da CompassUol, o qual se consiste em recriar uma página de vendas de plantas. Com rotas protegidas, responsividade e muito carisma, o projeto é um trabalho conjunto do Grupo 6 - "The Promissed Reactland".*
 
