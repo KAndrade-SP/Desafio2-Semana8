@@ -28,10 +28,10 @@ const Footer = () => {
                 <Link to={'/about-us'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">About us</li>
                 </Link>
-                <Link to={'/error404'}>
+                <Link to={'/products'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">Products</li>
                 </Link>
-                <Link to={'/error404'}>
+                <Link to={'*'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">Blogs</li>
                 </Link>   
               </ul>
@@ -43,10 +43,10 @@ const Footer = () => {
                 <Link to={'/about-us'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">About us</li>
                 </Link>
-                <Link to={'/error404'}>
+                <Link to={'/products'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">Products</li>
                 </Link>
-                <Link to={'/error404'}>
+                <Link to={'*'}>
                   <li className="font-raleway-regular cursor-pointer hover:text-avacado">Blogs</li>
                 </Link> 
               </ul>
