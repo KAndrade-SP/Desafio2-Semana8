@@ -59,6 +59,42 @@
       "plantLabel": "indoor",
       "features": "Low light tolerant Air purifier Low maintenance",
       "description": "Peace Lily is a popular indoor plant known for its air purifying properties and beautiful white blooms It thrives in low light conditions and requires minimal care making it perfect for home or office environments"
+    },
+    {
+      "id": 6,
+      "plantName": "Snake Plant",
+      "plantSubtitle": "Easycare indoor plant",
+      "plantType": "Succulent",
+      "price": "12.99",
+      "isInSale": true,
+      "discountPercentage": 2,
+      "plantLabel": "indoor",
+      "features": "Air purifying. low light tolerant",
+      "description": "The Snake Plant, also known as Mother in Laws Tongue, is a resilient indoor plant with upright, sword like leaves. It requires minimal maintenance and is excellent for purifying indoor air."
+    },
+    {
+      "id": 7,
+      "plantName": "Spider Plant",
+      "plantSubtitle": "Hanging basket favorite",
+      "plantType": "Perennial",
+      "price": "8.50",
+      "isInSale": true,
+      "discountPercentage": 1,
+      "plantLabel": "outdoor",
+      "features": "Easy to propagate. air purifying",
+      "description": "The Spider Plant"
+    },
+    {
+      "id": 8,
+      "plantName": "Pothos",
+      "plantSubtitle": "Versatile indoor vine",
+      "plantType": "Vine",
+      "price": "10.99",
+      "isInSale": true,
+      "discountPercentage": 2,
+      "plantLabel": "outdoor",
+      "features": "Low light tolerant. air purifying",
+      "description": "Pothos is a highly adaptable vine that can grow in a variety of indoor environments."
     }
   ]
 }

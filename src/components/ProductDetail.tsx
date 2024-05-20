@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 /*import plants from '../data';*/
 import axios from 'axios'
@@ -76,7 +76,7 @@ const ProductDetail = () => {
  
     return (
 
-    <div className='px-8 py-14 md:px-12 md:py-16 lg:px-16 lg:py-16 bg-lightgray'>
+    <section className='px-8 py-14 md:px-12 md:py-16 lg:px-16 lg:py-16 bg-lightgray'>
         <div className='md:mx-auto lg:grid lg:grid-cols-2 lg:gap-16 md:py-10'>
           <div className='lg:w-full lg:pt-8 lg:flex lg:items-center lg:justify-center mb-8 md:mx-auto'>
             <img src={Cactus} alt={plant.plantName} />
@@ -89,7 +89,9 @@ const ProductDetail = () => {
                 <button className=' mr-4 lg:my-2 bg bg-whitegreen border-lightgreen border-2 rounded-3xl  w-auto h-10 px-2 text-flaggreen font-raleway-regular pointer-events-none'>{plant.plantType}</button>
             </div>
             <span className=' pt-3 lg:pt-2 font-lato-bold text-xl'>${plant.price}</span>
-            <button className='flex-row overflow-hidden h-14 w-40 bg-lunargreen text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado hover:font-raleway-bold transition-all'>Check out</button>            
+            <Link to={'*'}>
+                <button className='flex-row overflow-hidden h-14 w-40 bg-lunargreen text-almwhite font-raleway-regular my-6 lg:my-5 hover:bg-avacado hover:font-raleway-bold transition-all'>Check out</button>
+            </Link>           
             <h3 className='font-lato-bold text-xl mb-3'>Features</h3>
             <ul className='list-disc font-raleway-regular pl-4'>
                 {feature.map((feature, index) => (
@@ -100,7 +102,7 @@ const ProductDetail = () => {
             <p className='font-raleway-regular' >{plant.description} </p>
           </div>
         </div>
-    </div>
+    </section>
     )
 }
 

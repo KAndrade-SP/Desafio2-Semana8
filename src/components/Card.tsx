@@ -1,5 +1,5 @@
 import Img1 from "../pages/HomePage/assets/img1.jpg";
-import type { Plant } from "../types/plant";
+import type { Plant } from "../types/Plant";
 import { Link } from "react-router-dom";
 
 

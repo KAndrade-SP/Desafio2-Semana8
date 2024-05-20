@@ -7,10 +7,10 @@ import Img2 from "./assets/img2.jpg";
 import Img3 from "./assets/img3.jpg";
 import Plant1 from "./assets/plant1.jpg";
 import Plant2 from "./assets/plant2.png";
-import Carousel1 from "./components/Carousel1";
-import Carousel2 from "./components/Carousel2";
+import Carousel1 from "../../components/Carousel1";
+import Carousel2 from "../../components/Carousel2";
 import { EmblaOptionsType } from "embla-carousel";
-import { Cta } from "./components/CTA";
+import { Cta } from "../../components/CTA";
 import { Link } from "react-router-dom";
 
 const OPTIONS: EmblaOptionsType = { loop: false };
@@ -59,7 +59,7 @@ export function HomePage() {
               </p>
             </div>
             <div className="flex flex-col md:flex-row items-center justify-center lg:gap-28 gap-8 font-raleway-regular pb-20 text-center">
-              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
+              <div className="flex flex-col gap-6 items-center justify-center cursor-pointer hover:scale-110 hover:transition-all">
                 <WaterdropIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Watering
@@ -71,7 +71,7 @@ export function HomePage() {
                   dehydration.
                 </p>
               </div>
-              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
+              <div className="flex flex-col gap-6 items-center justify-center cursor-pointer hover:scale-110 hover:transition-all">
                 <SunIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Sunlight
@@ -83,7 +83,7 @@ export function HomePage() {
                   light for their specific needs
                 </p>
               </div>
-              <div className="flex flex-col gap-6 items-center justify-center hover:scale-110 hover:transition-all">
+              <div className="flex flex-col gap-6 items-center justify-center cursor-pointer hover:scale-110 hover:transition-all">
                 <BoxIcon />
                 <h1 className="font-lato-bold text-2xl text-almblack">
                   Nutrients and Fertilizing

@@ -1,8 +1,8 @@
 import React from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import { Card } from "../../../components/Card";
-import type { Plant } from "../../../types/plant";
+import { Card } from "./Card";
+import type { Plant } from "../types/Plant";
 
 async function getPlants() {
   const response = await fetch("http://localhost:3000/plants");

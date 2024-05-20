@@ -46,7 +46,7 @@ const ProductList = () => {
     const images = [img01, img02, img03, img04];
     
     return (
-        <div className=' bg-lightgray'>
+        <section className=' bg-lightgray'>
             <h1 className='text-lunargreen font-ebgaramond-bold text-3xl md:pb-3 md:text-4xl lg:text-5xl text-center my-20 '>Our Plants for Your 
                 <span className=' text-avacado'> Green</span> Side
             </h1>
@@ -76,7 +76,7 @@ const ProductList = () => {
                     );
                 })}
             </div>
-        </div>
+        </section>
     )
 }
 

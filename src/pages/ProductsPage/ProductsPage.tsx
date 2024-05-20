@@ -2,7 +2,7 @@ import CactusImg from "../../assets/images/img_01.png";
 
 const ProductsPage = () => {
   return (
-    <div className='px-8 py-14 md:px-12 md:py-16 lg:px-16 lg:py-16 bg-lightgray'>
+    <section className='px-8 py-14 md:px-12 md:py-16 lg:px-16 lg:py-16 bg-lightgray'>
         <div className='md:mx-auto lg:grid lg:grid-cols-2 lg:gap-16 md:py-10'>
           <div className='lg:w-full lg:pt-8 lg:flex lg:items-center lg:justify-center mb-8 md:mx-auto'>
             <img src={CactusImg} alt="Foto de um Cactus pequeno plantado em uma xicara de xá"/>
@@ -27,7 +27,7 @@ const ProductsPage = () => {
             <p className='font-raleway-regular' >Ladyfinger cactus (*Echinocereus pentalophus*) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.</p>
           </div>
         </div>
-    </div>
+    </section>
   )
 }
 

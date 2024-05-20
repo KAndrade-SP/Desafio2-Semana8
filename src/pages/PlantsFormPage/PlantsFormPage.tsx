@@ -13,8 +13,8 @@ import {
   validPrice
 } from "./regex/RegexValidation"
 
-import { PlantsError } from "./types/PlantsError"
-import { PlantsSucess } from './types/PlantsSucess'
+import { PlantsError } from "../../types/PlantsError"
+import { PlantsSucess } from '../../types/PlantsSucess'
 
 import PlantImg from '../../assets/images/plant-form.png'
 
